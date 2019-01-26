@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace RailingVN
 {
-    public partial class Form1 : Form
+    public partial class RailingUIForm : Form
     {
-        public Form1()
+        public RailingUIForm()
         {
             InitializeComponent();
         }
