@@ -12,7 +12,7 @@ using Tekla.Structures.Model.UI;
 
 namespace RailingVN
 {
-    static class Program
+    static public class Program
     {
         /// <summary>
         /// The main entry point for the application.
@@ -20,71 +20,53 @@ namespace RailingVN
         [STAThread]
         static void Main()
         {
-            var currentModel = new Model();
-            if (!currentModel.GetConnectionStatus())
+            ModelKeeper.CurrentModel = new Model();
+            if (!ModelKeeper.CurrentModel.GetConnectionStatus() || ModelKeeper.CurrentModel == null)
             {
                 MessageBox.Show("Tekla Structures Model is not opened," +
-                                    " or crashed, restart Tekla and try again");
+                              " or crashed, restart Tekla and Railing app and try again");
             }
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new RailingUI());
 
         }
     }
-    public class Engine
+
+}
+
+public static class ModelKeeper
+{
+    public static Model CurrentModel { get; set; }
+}
+
+public static class Enums
+{
+    public enum DividingOptionsEnum
     {
-
-        public ArrayList PickRailingPoints()
-        {
-            var Picker = new Picker();
-            var PickedPoints = Picker.PickPoints(Picker.PickPointEnum.PICK_POLYGON,
-                "Pick points in the model space");
-            return PickedPoints;
-        }
-        public void SaveUserWorkPlane()
-        {
-            //TO DO implement user work plane save to TempWorkPlane
-        }
-
-
-        public void BuildRailingSegment( Point startPoint, Point endPoint )
-        {
-            //TO DO railing constructs from start to end point
-        }
-
+        AllEqual,
+        AllOverride,
+        OverrideButFirst,
+        OverrideButLast,
+        OverrideButBoth
     }
 
-
-    public static class Enums
+    public enum LeftoverOptionsEnum
     {
-        public enum DividingOptionsEnum
-        {
-            AllEqual,
-            AllOverride,
-            OverrideButFirst,
-            OverrideButLast,
-            OverrideButBoth
-        }
-
-        public enum LeftoverOptionsEnum
-        {
-            StartOffset,
-            EndOffset,
-            BothOffsets,
-            FirstStep,
-            LastStep,
-            BothSteps
-        }
-
-        public enum StepRoundingOptionsEnum
-        {
-            NoRounding,
-            ClosestInteger,
-            ToBaseOfFive,
-            ToBaseOfTen
-        }
+        StartOffset,
+        EndOffset,
+        BothOffsets,
+        FirstStep,
+        LastStep,
+        BothSteps
     }
 
-
+    public enum StepRoundingOptionsEnum
+    {
+        NoRounding,
+        ClosestInteger,
+        ToBaseOfFive,
+        ToBaseOfTen
+    }
 }

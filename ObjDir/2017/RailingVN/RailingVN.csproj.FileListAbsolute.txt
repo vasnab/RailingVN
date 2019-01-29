@@ -24,4 +24,4 @@ C:\Users\vasyl\source\repos\RailingVN\ObjDir\2017\RailingVN\RailingVN.csproj.Cor
 C:\Users\vasyl\source\repos\RailingVN\ObjDir\2017\RailingVN\RailingVN.csproj.CopyComplete
 C:\Users\vasyl\source\repos\RailingVN\ObjDir\2017\RailingVN\RailingVN.exe
 C:\Users\vasyl\source\repos\RailingVN\ObjDir\2017\RailingVN\RailingVN.pdb
-C:\Users\vasyl\source\repos\RailingVN\ObjDir\2017\RailingVN\RailingVN.RailingUIForm.resources
+C:\Users\vasyl\source\repos\RailingVN\ObjDir\2017\RailingVN\RailingVN.RailingUI.resources

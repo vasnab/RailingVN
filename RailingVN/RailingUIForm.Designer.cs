@@ -127,6 +127,7 @@
             this.groupDividingOptions.TabIndex = 10;
             this.groupDividingOptions.TabStop = false;
             this.groupDividingOptions.Text = "Dividing Options";
+            this.groupDividingOptions.Enter += new System.EventHandler(this.groupDividingOptions_Enter);
             // 
             // rbOverrideButBoth
             // 
@@ -379,6 +380,11 @@
             0,
             0,
             0});
+            this.nudStartOffset.Minimum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            -2147483648});
             this.nudStartOffset.Name = "nudStartOffset";
             this.nudStartOffset.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.nudStartOffset.Size = new System.Drawing.Size(75, 20);
@@ -400,6 +406,11 @@
             0,
             0,
             0});
+            this.nudEndOffset.Minimum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            -2147483648});
             this.nudEndOffset.Name = "nudEndOffset";
             this.nudEndOffset.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.nudEndOffset.Size = new System.Drawing.Size(75, 20);
