@@ -41,18 +41,15 @@ public static class ModelKeeper
     public static Model CurrentModel { get; set; }
 }
 
-public static class Enums
+ static class Enums
 {
-    public enum DividingOptionsEnum
+     enum DividingOptionsEnum
     {
         AllEqual,
         AllOverride,
-        OverrideButFirst,
-        OverrideButLast,
-        OverrideButBoth
     }
 
-    public enum LeftoverOptionsEnum
+     enum LeftoverOptionsEnum
     {
         StartOffset,
         EndOffset,
@@ -62,7 +59,7 @@ public static class Enums
         BothSteps
     }
 
-    public enum StepRoundingOptionsEnum
+     enum StepRoundingOptionsEnum
     {
         NoRounding,
         ClosestInteger,
