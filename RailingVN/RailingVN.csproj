@@ -99,6 +99,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RailingEngine.cs" />
     <Compile Include="RailingUIForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -20,8 +20,9 @@ namespace RailingVN
         [STAThread]
         static void Main()
         {
-            ModelKeeper.CurrentModel = new Model();
-            if (!ModelKeeper.CurrentModel.GetConnectionStatus() || ModelKeeper.CurrentModel == null)
+            Model CurrentModel = new Model();
+
+            if (CurrentModel.GetConnectionStatus() != true || CurrentModel == null)
             {
                 MessageBox.Show("Tekla Structures Model is not opened," +
                               " or crashed, restart Tekla and Railing app and try again");
@@ -31,39 +32,12 @@ namespace RailingVN
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new RailingUI());
 
+            
         }
     }
 
 }
 
-public static class ModelKeeper
-{
-    public static Model CurrentModel { get; set; }
-}
 
- static class Enums
-{
-     enum DividingOptionsEnum
-    {
-        AllEqual,
-        AllOverride,
-    }
 
-     enum LeftoverOptionsEnum
-    {
-        StartOffset,
-        EndOffset,
-        BothOffsets,
-        FirstStep,
-        LastStep,
-        BothSteps
-    }
 
-     enum StepRoundingOptionsEnum
-    {
-        NoRounding,
-        ClosestInteger,
-        ToBaseOfFive,
-        ToBaseOfTen
-    }
-}
