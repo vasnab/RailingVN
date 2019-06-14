@@ -24,12 +24,78 @@ namespace RailingVN
             InitializeComponent();
             base.InitializeForm();
             RealTimeLogLabel.Text = RE.MaxStep.ToString();
+            
+            #region Enums to dropdowns
+            PostDepthComboBox.DataSource = Enum.GetValues(typeof(Position.DepthEnum));
+            PostDepthComboBox.SelectedItem = Position.DepthEnum.MIDDLE;
+            PostRotationComboBox.DataSource = Enum.GetValues(typeof(Position.RotationEnum));
+            PostRotationComboBox.SelectedItem = Position.RotationEnum.BELOW;
+            PostPlaneComboBox.DataSource = Enum.GetValues(typeof(Position.PlaneEnum));
+            PostPlaneComboBox.SelectedItem = Position.PlaneEnum.LEFT;
 
+            InfillDepthComboBox.DataSource = Enum.GetValues(typeof(Position.DepthEnum));
+            InfillDepthComboBox.SelectedItem = Position.DepthEnum.BEHIND;
+            InfillRotationComboBox.DataSource = Enum.GetValues(typeof(Position.RotationEnum));
+            InfillRotationComboBox.SelectedItem = Position.RotationEnum.BACK;
+            InfillPlaneComboBox.DataSource = Enum.GetValues(typeof(Position.PlaneEnum));
+            InfillPlaneComboBox.SelectedItem = Position.PlaneEnum.MIDDLE;
+
+            HandrailDepthComboBox.DataSource = Enum.GetValues(typeof(Position.DepthEnum));
+            HandrailDepthComboBox.SelectedItem = Position.DepthEnum.MIDDLE;
+            HandrailRotationComboBox.DataSource = Enum.GetValues(typeof(Position.RotationEnum));
+            HandrailRotationComboBox.SelectedItem = Position.RotationEnum.TOP;
+            HandrailPlaneComboBox.DataSource = Enum.GetValues(typeof(Position.PlaneEnum));
+            HandrailPlaneComboBox.SelectedItem = Position.PlaneEnum.MIDDLE;  
+            #endregion
         }
+
         RailingEngine RE = new RailingEngine();
         PostModel PM = new PostModel();
         InfillModel IM = new InfillModel();
         HandrailModel HM = new HandrailModel();
+
+        private void RailingUI_Load(object sender, EventArgs e)
+        {            
+            SetAttributeValue(PostPartPrefixTextBox, PM.PartPrefix);
+            SetAttributeValue(PostAsmPrefixTextBox, PM.AssemblyPrefix);
+            SetAttributeValue(PostNameTextBox, PM.Name);
+            SetAttributeValue(PostProfileTextBox, PM.Profile);
+            SetAttributeValue(PostMaterialTextBox, PM.Material);
+            SetAttributeValue(PostFinishTextBox, PM.Finish);
+            SetAttributeValue(PostClassTextBox, PM.Class);
+            SetAttributeValue(PostDepthOffset, PM.DepthOffset.ToString());
+            SetAttributeValue(PostRotationOffset, PM.RotationOffset.ToString());
+            SetAttributeValue(PostPlaneOffset, PM.PlaneOffset.ToString());
+            SetAttributeValue(PostCustCompTextBox, PM.CustomComponentName);
+            
+
+            SetAttributeValue(InfillPartPrefixTextBox, IM.PartPrefix);
+            SetAttributeValue(InfillAsmPrefixTextBox, IM.AssemblyPrefix);
+            SetAttributeValue(InfillNameTextBox, IM.Name);
+            SetAttributeValue(InfillProfileTextBox, IM.Profile);
+            SetAttributeValue(InfillMaterialTextBox, IM.Material);
+            SetAttributeValue(InfillFinishTextBox, IM.Finish);
+            SetAttributeValue(InfillClassTextBox, IM.Class);
+            SetAttributeValue(InfillDepthOffset, IM.DepthOffset.ToString());
+            SetAttributeValue(InfillRotationOffset, IM.RotationOffset.ToString());
+            SetAttributeValue(InfillPlaneOffset, IM.PlaneOffset.ToString());
+            SetAttributeValue(InfillStartPointOffset, IM.StartPointOffsetDx.ToString());
+            SetAttributeValue(InfillEndPointOffset, IM.EndPointOffsetDx.ToString());
+
+            SetAttributeValue(HandrailPartPrefixTextBox, HM.PartPrefix);
+            SetAttributeValue(HandrailAsmPrefixTextBox, HM.AssemblyPrefix);
+            SetAttributeValue(HandrailNameTextBox, HM.Name);
+            SetAttributeValue(HandrailProfileTextBox, HM.Profile);
+            SetAttributeValue(HandrailMaterialTextBox, HM.Material);
+            SetAttributeValue(HandrailFinishTextBox, HM.Finish);
+            SetAttributeValue(HandrailClassTextBox, HM.Class);
+            SetAttributeValue(HandrailDepthOffset, HM.DepthOffset.ToString());
+            SetAttributeValue(HandrailRotationOffset, HM.RotationOffset.ToString());
+            SetAttributeValue(HandrailPlaneOffset, HM.PlaneOffset.ToString());
+            
+
+        }
+
 
         private void PickButton_Click(object sender, EventArgs e) // obsolete
         {
@@ -283,7 +349,15 @@ namespace RailingVN
                         RailingEngine.BlackLine(PointX, PointY);
                         RailingEngine.RedLine(PointX, PointZ);
 
-                        RailingEngine.InsertPost(PointX, PointZ, PM);                        
+                        if (PostCCSwitchComboBox.SelectedIndex == 0)
+                        {
+                            RailingEngine.InsertPost(PointX, PointZ, PM);
+                        }
+                        else
+                        {
+                            RailingEngine.InsertPostCC(PointX, PointZ, PM);
+                        }
+
                     }
                     for (int j = 0; j < rs.InsertionPoints.Count-1; j++)
                     {
@@ -419,8 +493,7 @@ namespace RailingVN
         {
             HM.Class = HandrailClassTextBox.Text;
         }
-
-        
+                
         private void InsertHandrailButton_Click(object sender, EventArgs e) //insert handrail button
         {
             Model CurrentModel = new Model();
@@ -428,12 +501,265 @@ namespace RailingVN
             CurrentModel.CommitChanges();
         }
 
+        #region PostPositioning
+        private void PostDepthComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PM.Depth = (Position.DepthEnum)PostDepthComboBox.SelectedItem;
+        }
 
+        private void PostRotationComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PM.Rotation = (Position.RotationEnum)PostRotationComboBox.SelectedItem;
+        }
 
+        private void PostPlaneComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PM.Plane = (Position.PlaneEnum)PostPlaneComboBox.SelectedItem;
+        }
 
-        //private void shapeCatalog1_Load(object sender, EventArgs e)
-        //{
-        //    ShapeCatalog shapeCatalog = new ShapeCatalog(ShapeCatalogBox.Text);
-        //}
+        private void PostDepthOffset_TextChanged(object sender, EventArgs e)
+        {
+            if (double.TryParse(PostDepthOffset.Text, out double textBoxValue))
+            {
+                PM.DepthOffset = textBoxValue;
+            }
+            else
+            {
+                PM.DepthOffset = 0;
+            }
+
+        }
+
+        private void PostRotationOffset_TextChanged(object sender, EventArgs e)
+        {
+            if (double.TryParse(PostRotationOffset.Text, out double textBoxValue))
+            {
+                PM.RotationOffset = textBoxValue;
+            }
+            else
+            {
+                PM.RotationOffset = 0;
+            }
+        }        
+
+        private void PostPlaneOffset_TextChanged(object sender, EventArgs e)
+        {
+            if (double.TryParse(PostPlaneOffset.Text, out double textBoxValue))
+            {
+                PM.PlaneOffset = textBoxValue;
+            }
+            else
+            {
+                PM.PlaneOffset = 0;
+            }
+        }
+        #endregion
+
+        #region InfillPositioning
+        private void InfillDepthComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            IM.Depth = (Position.DepthEnum)InfillDepthComboBox.SelectedItem;
+        }
+
+        private void InfillRotationComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            IM.Rotation = (Position.RotationEnum)InfillRotationComboBox.SelectedItem;
+        }
+
+        private void InfillPlaneComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            IM.Plane = (Position.PlaneEnum)InfillPlaneComboBox.SelectedItem;
+        }
+                
+        private void InfillStartPointOffset_TextChanged(object sender, EventArgs e)
+        {
+            if (double.TryParse(InfillStartPointOffset.Text, out double textBoxValue))
+            {
+                IM.StartPointOffsetDx = textBoxValue;
+            }
+            else
+            {
+                IM.StartPointOffsetDx = 0;
+            }
+        }
+
+        private void InfillEndPointOffset_TextChanged(object sender, EventArgs e)
+        {
+            if (double.TryParse(InfillEndPointOffset.Text, out double textBoxValue))
+            {
+                IM.EndPointOffsetDx = textBoxValue;
+            }      
+            else   
+            {      
+                IM.EndPointOffsetDx = 0;
+            }
+        }
+
+        private void InfillDepthOffset_TextChanged(object sender, EventArgs e)
+        {
+            if (double.TryParse(InfillDepthOffset.Text, out double textBoxValue))
+            {
+                IM.DepthOffset = textBoxValue;
+            }
+            else
+            {
+                IM.DepthOffset = 0;
+            }
+        }
+
+        private void InfillRotationOffset_TextChanged(object sender, EventArgs e)
+        {
+            if (double.TryParse(InfillRotationOffset.Text, out double textBoxValue))
+            {
+                IM.RotationOffset = textBoxValue;
+            }
+            else
+            {
+                IM.RotationOffset = 0;
+            }
+        }
+
+        private void InfillPlaneOffset_TextChanged(object sender, EventArgs e)
+        {
+            if (double.TryParse(InfillPlaneOffset.Text, out double textBoxValue))
+            {
+                IM.PlaneOffset = textBoxValue;
+            }
+            else
+            {
+                IM.PlaneOffset = 0;
+            }
+        }
+
+            #endregion
+
+        #region HandrailPositioning
+        private void HandrailDepthComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            HM.Depth = (Position.DepthEnum)HandrailDepthComboBox.SelectedItem;
+        }
+
+        private void HandrailRotationComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            HM.Rotation = (Position.RotationEnum)HandrailRotationComboBox.SelectedItem;
+        }
+
+        private void HandrailPlaneComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            HM.Plane = (Position.PlaneEnum)HandrailPlaneComboBox.SelectedItem;
+        }
+
+        private void HandrailDepthOffset_TextChanged(object sender, EventArgs e)
+        {
+            if (double.TryParse(HandrailDepthOffset.Text, out double textBoxValue))
+            {
+                HM.DepthOffset = textBoxValue;
+            }
+            else
+            {
+                HM.DepthOffset = 0;
+            }
+        }
+
+        private void HandrailRotationOffset_TextChanged(object sender, EventArgs e)
+        {
+            if (double.TryParse(HandrailRotationOffset.Text, out double textBoxValue))
+            {
+                HM.RotationOffset = textBoxValue;
+            }
+            else
+            {
+                HM.RotationOffset = 0;
+            }
+        }
+
+        private void HandrailPlaneOffset_TextChanged(object sender, EventArgs e)
+        {
+            if (double.TryParse(HandrailPlaneOffset.Text, out double textBoxValue))
+            {
+                HM.PlaneOffset = textBoxValue;
+            }
+            else
+            {
+                HM.PlaneOffset = 0;
+            }
+        }
+        #endregion
+
+        
+        private void PostProfileCatalog_SelectClicked(object sender, EventArgs e)
+        {
+            PostProfileCatalog.SelectedProfile = PostProfileTextBox.Text;
+        }
+
+        private void PostProfileCatalog_SelectionDone(object sender, EventArgs e)
+        {
+            SetAttributeValue(PostProfileTextBox, PostProfileCatalog.SelectedProfile);
+        }
+
+        private void PostMaterialCatalog_SelectClicked(object sender, EventArgs e)
+        {
+            PostMaterialCatalog.SelectedMaterial = PostMaterialTextBox.Text;
+        }
+
+        private void PostMaterialCatalog_SelectionDone(object sender, EventArgs e)
+        {
+            SetAttributeValue(PostMaterialTextBox, PostMaterialCatalog.SelectedMaterial);
+        }
+
+        private void InfillProfileCatalog_SelectClicked(object sender, EventArgs e)
+        {
+            InfillProfileCatalog.SelectedProfile = InfillProfileTextBox.Text;
+        }
+
+        private void InfillProfileCatalog_SelectionDone(object sender, EventArgs e)
+        {
+            SetAttributeValue(InfillProfileTextBox, InfillProfileCatalog.SelectedProfile);
+        }
+
+        private void InfillMaterialCatalog_SelectClicked(object sender, EventArgs e)
+        {
+            InfillMaterialCatalog.SelectedMaterial = InfillMaterialTextBox.Text;
+        }
+
+        private void InfillMaterialCatalog_SelectionDone(object sender, EventArgs e)
+        {
+            SetAttributeValue(InfillMaterialTextBox, InfillMaterialCatalog.SelectedMaterial);
+        }
+
+        private void HandrailProfileCatalog_SelectClicked(object sender, EventArgs e)
+        {
+            HandrailProfileCatalog.SelectedProfile = HandrailProfileTextBox.Text;
+        }
+
+        private void HandrailProfileCatalog_SelectionDone(object sender, EventArgs e)
+        {
+            SetAttributeValue(HandrailProfileTextBox, HandrailProfileCatalog.SelectedProfile);
+        }
+
+        private void HandrailMaterialCatalog_SelectClicked(object sender, EventArgs e)
+        {
+            HandrailMaterialCatalog.SelectedMaterial = HandrailMaterialTextBox.Text;
+        }
+
+        private void HandrailMaterialCatalog_SelectionDone(object sender, EventArgs e)
+        {
+            SetAttributeValue(HandrailMaterialTextBox, HandrailMaterialCatalog.SelectedMaterial);
+        }
+
+        private void PostСomponentCatalog_SelectClicked(object sender, EventArgs e)
+        {
+            PostСomponentCatalog.SelectedName =PostCustCompTextBox.Text;
+        }
+
+        private void PostСomponentCatalog_SelectionDone(object sender, EventArgs e)
+        {
+            SetAttributeValue(PostCustCompTextBox, PostСomponentCatalog.SelectedName);
+        }
+
+        private void PostCustCompTextBox_TextChanged(object sender, EventArgs e)
+        {
+            PM.CustomComponentName = PostCustCompTextBox.Text;
+        }
     }
 }

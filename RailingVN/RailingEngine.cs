@@ -81,12 +81,30 @@ namespace RailingVN
             b.Material.MaterialString = pM.Material;
             b.Finish = pM.Finish;
             b.Class = pM.Class;
-            b.Position.Depth = Position.DepthEnum.MIDDLE;
-            b.Position.Rotation = Position.RotationEnum.BELOW;
-            b.Position.Plane = Position.PlaneEnum.LEFT;
+            b.Position.Depth = pM.Depth;
+            b.Position.Rotation = pM.Rotation;           
+            b.Position.Plane = pM.Plane;
+            b.Position.DepthOffset = pM.DepthOffset;
+            b.Position.RotationOffset = pM.RotationOffset;
+            b.Position.PlaneOffset = pM.PlaneOffset;
 
             bool result = false;
             result = b.Insert();
+        }
+        public static void InsertPostCC(Point startPoint, Point endPoint, PostModel pM)
+        {
+            CustomPart customPart = new CustomPart(startPoint, new Point(startPoint.X, 100d, 0) );
+            customPart.Name = pM.CustomComponentName;
+            customPart.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
+            customPart.Position.Depth = pM.Depth;
+            customPart.Position.Rotation = pM.Rotation;
+            customPart.Position.Plane = pM.Plane;
+            customPart.Position.DepthOffset = pM.DepthOffset;
+            customPart.Position.RotationOffset = pM.RotationOffset;
+            customPart.Position.PlaneOffset = pM.PlaneOffset;
+
+            bool result = false;
+            result = customPart.Insert();
         }
         public static void InsertInfill(Point startPoint, Point endPoint, InfillModel iM)
         {
@@ -101,12 +119,15 @@ namespace RailingVN
             b.Material.MaterialString = iM.Material;
             b.Finish = iM.Finish;
             b.Class = iM.Class;
-            b.Position.Depth = Position.DepthEnum.BEHIND;
-            b.Position.Rotation = Position.RotationEnum.BACK;
-            b.Position.Plane = Position.PlaneEnum.MIDDLE;
-            b.Position.PlaneOffset = 20d;
-            b.StartPointOffset.Dx = 10d;
-            b.EndPointOffset.Dx = -10d;
+            b.Position.Depth = iM.Depth;
+            b.Position.Rotation = iM.Rotation;
+            b.Position.Plane = iM.Plane;            
+            b.Position.DepthOffset = iM.DepthOffset;
+            b.Position.RotationOffset = iM.RotationOffset;
+            b.Position.PlaneOffset = iM.PlaneOffset;
+
+            b.StartPointOffset.Dx = iM.StartPointOffsetDx;
+            b.EndPointOffset.Dx = iM.EndPointOffsetDx;
 
             bool result = false;
             result = b.Insert();
@@ -129,11 +150,13 @@ namespace RailingVN
             pB.Material.MaterialString = hM.Material;
             pB.Finish = hM.Finish;
             pB.Class = hM.Class;
-            pB.Position.Depth = Position.DepthEnum.MIDDLE;
-            pB.Position.Rotation = Position.RotationEnum.TOP;
-            pB.Position.Plane = Position.PlaneEnum.MIDDLE;
-            // pB.Position.PlaneOffset = 20d;
-           
+            pB.Position.Depth = hM.Depth;
+            pB.Position.Rotation = hM.Rotation;
+            pB.Position.Plane = hM.Plane;
+            pB.Position.DepthOffset = hM.DepthOffset;
+            pB.Position.RotationOffset = hM.RotationOffset;
+            pB.Position.PlaneOffset = hM.PlaneOffset;
+
             bool result = false;
             result = pB.Insert();
         }
@@ -243,8 +266,17 @@ namespace RailingVN
         public string Profile { get; set; } = "SHS45*4";
         public string Material { get; set; } = "S355J0";
         public string Finish { get; set; } = "PAINT";
-        public string Class { get; set; } = "1";
-        
+        public string Class { get; set; } = "2";
+        public string CustomComponentName { get; set; } = "CLMN45x55";
+
+
+        public Position.DepthEnum Depth { get; set; } = Position.DepthEnum.MIDDLE;
+        public Position.RotationEnum Rotation { get; set; } = Position.RotationEnum.BELOW;
+        public Position.PlaneEnum Plane { get; set; } = Position.PlaneEnum.LEFT;
+        public double DepthOffset { get; set; } = 0d;
+        public double RotationOffset { get; set; } = 0d;
+        public double PlaneOffset { get; set; } = 0d;
+
     }
 
     public class InfillModel
@@ -257,6 +289,15 @@ namespace RailingVN
         public string Material { get; set; } = "Glass";
         public string Finish { get; set; } = "clear";
         public string Class { get; set; } = "5";
+        public Position.DepthEnum Depth { get; set; } = Position.DepthEnum.BEHIND;
+        public Position.RotationEnum Rotation { get; set; } = Position.RotationEnum.BACK;
+        public Position.PlaneEnum Plane { get; set; } = Position.PlaneEnum.MIDDLE;
+        public double DepthOffset { get; set; } = 0d;
+        public double RotationOffset { get; set; } = 0d;
+        public double PlaneOffset { get; set; } = 20d;
+        public double StartPointOffsetDx { get; set; } = 10d;
+        public double EndPointOffsetDx { get; set; } = -10d;
+
     }
 
     public class HandrailModel
@@ -269,5 +310,11 @@ namespace RailingVN
         public string Material { get; set; } = "AISI304";
         public string Finish { get; set; } = "BRUSHED";
         public string Class { get; set; } = "7";
+        public Position.DepthEnum Depth { get; set; } = Position.DepthEnum.MIDDLE;
+        public Position.RotationEnum Rotation { get; set; } = Position.RotationEnum.TOP;
+        public Position.PlaneEnum Plane { get; set; } = Position.PlaneEnum.MIDDLE;
+        public double DepthOffset { get; set; } = 0d;
+        public double RotationOffset { get; set; } = 0d;
+        public double PlaneOffset { get; set; } = 0d;
     }
 }
