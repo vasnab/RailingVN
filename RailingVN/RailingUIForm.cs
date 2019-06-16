@@ -81,6 +81,8 @@ namespace RailingVN
             SetAttributeValue(InfillPlaneOffset, IM.PlaneOffset.ToString());
             SetAttributeValue(InfillStartPointOffset, IM.StartPointOffsetDx.ToString());
             SetAttributeValue(InfillEndPointOffset, IM.EndPointOffsetDx.ToString());
+            SetAttributeValue(InfillCustCompTextBox, IM.CustomComponentName);
+
 
             SetAttributeValue(HandrailPartPrefixTextBox, HM.PartPrefix);
             SetAttributeValue(HandrailAsmPrefixTextBox, HM.AssemblyPrefix);
@@ -94,9 +96,8 @@ namespace RailingVN
             SetAttributeValue(HandrailPlaneOffset, HM.PlaneOffset.ToString());
             
 
-        }
-
-
+        }//preloading UI fields values
+        
         private void PickButton_Click(object sender, EventArgs e) // obsolete
         {
             try
@@ -362,8 +363,18 @@ namespace RailingVN
                     for (int j = 0; j < rs.InsertionPoints.Count-1; j++)
                     {
                         T3D.Point PointX = new T3D.Point(rs.InsertionPoints[j].X, 0);
-                        T3D.Point NextPointX = new T3D.Point(rs.InsertionPoints[j+1].X, 0);                        
-                        RailingEngine.InsertInfill(PointX, NextPointX, IM);
+                        T3D.Point NextPointX = new T3D.Point(rs.InsertionPoints[j+1].X, 0);
+
+
+                        if (InfillCCSwitchComboBox.SelectedIndex == 0)
+                        {
+                            RailingEngine.InsertInfill(PointX, NextPointX, IM); 
+                        }
+                        else
+                        {
+                            RailingEngine.InsertInfillCC(PointX, NextPointX, IM); 
+                        }
+
                     }
                    
                     CurrentModel.GetWorkPlaneHandler().
@@ -760,6 +771,16 @@ namespace RailingVN
         private void PostCustCompTextBox_TextChanged(object sender, EventArgs e)
         {
             PM.CustomComponentName = PostCustCompTextBox.Text;
+        }
+
+        private void InfillComponentCatalog_SelectClicked(object sender, EventArgs e)
+        {
+            IM.CustomComponentName = InfillCustCompTextBox.Text;
+        }
+
+        private void InfillComponentCatalog_SelectionDone(object sender, EventArgs e)
+        {
+            SetAttributeValue(InfillCustCompTextBox, InfillComponentCatalog.SelectedName);
         }
     }
 }

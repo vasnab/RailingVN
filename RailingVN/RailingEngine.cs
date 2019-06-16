@@ -72,24 +72,24 @@ namespace RailingVN
         public static void InsertPost(Point startPoint, Point endPoint, PostModel pM)
         {
             endPoint.Z = pM.Height;
-            Beam b = new Beam(startPoint, endPoint);
+            Beam postBeam = new Beam(startPoint, endPoint);
 
-            b.PartNumber.Prefix = pM.PartPrefix;
-            b.AssemblyNumber.Prefix = pM.AssemblyPrefix;
-            b.Name = pM.Name;
-            b.Profile.ProfileString = pM.Profile;
-            b.Material.MaterialString = pM.Material;
-            b.Finish = pM.Finish;
-            b.Class = pM.Class;
-            b.Position.Depth = pM.Depth;
-            b.Position.Rotation = pM.Rotation;           
-            b.Position.Plane = pM.Plane;
-            b.Position.DepthOffset = pM.DepthOffset;
-            b.Position.RotationOffset = pM.RotationOffset;
-            b.Position.PlaneOffset = pM.PlaneOffset;
+            postBeam.PartNumber.Prefix = pM.PartPrefix;
+            postBeam.AssemblyNumber.Prefix = pM.AssemblyPrefix;
+            postBeam.Name = pM.Name;
+            postBeam.Profile.ProfileString = pM.Profile;
+            postBeam.Material.MaterialString = pM.Material;
+            postBeam.Finish = pM.Finish;
+            postBeam.Class = pM.Class;
+            postBeam.Position.Depth = pM.Depth;
+            postBeam.Position.Rotation = pM.Rotation;           
+            postBeam.Position.Plane = pM.Plane;
+            postBeam.Position.DepthOffset = pM.DepthOffset;
+            postBeam.Position.RotationOffset = pM.RotationOffset;
+            postBeam.Position.PlaneOffset = pM.PlaneOffset;
 
             bool result = false;
-            result = b.Insert();
+            result = postBeam.Insert();
         }
         public static void InsertPostCC(Point startPoint, Point endPoint, PostModel pM)
         {
@@ -108,29 +108,52 @@ namespace RailingVN
         }
         public static void InsertInfill(Point startPoint, Point endPoint, InfillModel iM)
         {
-            startPoint.Z = iM.Height;
+            startPoint.Z = iM.Height; //setting railing height test it in usage
             endPoint.Z = iM.Height;
-            Beam b = new Beam(startPoint, endPoint);
+            Beam infillBeam = new Beam(startPoint, endPoint);
 
-            b.PartNumber.Prefix = iM.PartPrefix;
-            b.AssemblyNumber.Prefix = iM.AssemblyPrefix;
-            b.Name = iM.Name;
-            b.Profile.ProfileString = iM.Profile;
-            b.Material.MaterialString = iM.Material;
-            b.Finish = iM.Finish;
-            b.Class = iM.Class;
-            b.Position.Depth = iM.Depth;
-            b.Position.Rotation = iM.Rotation;
-            b.Position.Plane = iM.Plane;            
-            b.Position.DepthOffset = iM.DepthOffset;
-            b.Position.RotationOffset = iM.RotationOffset;
-            b.Position.PlaneOffset = iM.PlaneOffset;
+            infillBeam.PartNumber.Prefix = iM.PartPrefix;
+            infillBeam.AssemblyNumber.Prefix = iM.AssemblyPrefix;
+            infillBeam.Name = iM.Name;
+            infillBeam.Profile.ProfileString = iM.Profile;
+            infillBeam.Material.MaterialString = iM.Material;
+            infillBeam.Finish = iM.Finish;
+            infillBeam.Class = iM.Class;
+            infillBeam.Position.Depth = iM.Depth;
+            infillBeam.Position.Rotation = iM.Rotation;
+            infillBeam.Position.Plane = iM.Plane;            
+            infillBeam.Position.DepthOffset = iM.DepthOffset;
+            infillBeam.Position.RotationOffset = iM.RotationOffset;
+            infillBeam.Position.PlaneOffset = iM.PlaneOffset;
 
-            b.StartPointOffset.Dx = iM.StartPointOffsetDx;
-            b.EndPointOffset.Dx = iM.EndPointOffsetDx;
+            infillBeam.StartPointOffset.Dx = iM.StartPointOffsetDx;
+            infillBeam.EndPointOffset.Dx = iM.EndPointOffsetDx;
 
             bool result = false;
-            result = b.Insert();
+            result = infillBeam.Insert();
+        }
+
+        public static void InsertInfillCC(Point startPoint, Point endPoint, InfillModel iM)
+        {
+            startPoint.Z = iM.Height;
+            endPoint.Z = iM.Height;
+            CustomPart customPartInfill = new CustomPart(startPoint, endPoint);
+            customPartInfill.Name = iM.CustomComponentName;
+            customPartInfill.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
+            //customPartInfill.SetAttribute("H2",1435.0);
+            //customPartInfill.SetAttribute("St", 110.0);
+            //customPartInfill.SetAttribute("h1", 0.0);
+
+
+            customPartInfill.Position.Depth = iM.Depth;
+            customPartInfill.Position.Rotation = iM.Rotation;
+            customPartInfill.Position.Plane = iM.Plane;
+            customPartInfill.Position.DepthOffset = iM.DepthOffset;
+            customPartInfill.Position.RotationOffset = iM.RotationOffset;
+            customPartInfill.Position.PlaneOffset = iM.PlaneOffset;
+
+            bool result = false;
+            result = customPartInfill.Insert();            
         }
         public static void InsertHandrail(List<T3D.Point> pickedPoints, HandrailModel hM)
         {           
@@ -289,6 +312,8 @@ namespace RailingVN
         public string Material { get; set; } = "Glass";
         public string Finish { get; set; } = "clear";
         public string Class { get; set; } = "5";
+        public string CustomComponentName { get; set; } = "spileSection";
+
         public Position.DepthEnum Depth { get; set; } = Position.DepthEnum.BEHIND;
         public Position.RotationEnum Rotation { get; set; } = Position.RotationEnum.BACK;
         public Position.PlaneEnum Plane { get; set; } = Position.PlaneEnum.MIDDLE;

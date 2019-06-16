@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RailingUI));
-            this.PickButton = new System.Windows.Forms.Button();
             this.MaxStepLabel = new System.Windows.Forms.Label();
             this.StartOffsetLabel = new System.Windows.Forms.Label();
             this.EndOffsetLabel = new System.Windows.Forms.Label();
@@ -121,7 +120,6 @@
             this.label34 = new System.Windows.Forms.Label();
             this.HandrailDepthComboBox = new System.Windows.Forms.ComboBox();
             this.InsertHandrailButton = new System.Windows.Forms.Button();
-            this.label17 = new System.Windows.Forms.Label();
             this.HandrailClassTextBox = new System.Windows.Forms.TextBox();
             this.HandrailFinishTextBox = new System.Windows.Forms.TextBox();
             this.HandrailMaterialTextBox = new System.Windows.Forms.TextBox();
@@ -138,9 +136,7 @@
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
-            this.HandrailCustCompTextBox = new System.Windows.Forms.TextBox();
             this.HandrailMaterialCatalog = new Tekla.Structures.Dialog.UIControls.MaterialCatalog();
-            this.HandrailComponentCatalog = new Tekla.Structures.Dialog.UIControls.ComponentCatalog();
             this.HandrailProfileCatalog = new Tekla.Structures.Dialog.UIControls.ProfileCatalog();
             this.RealTimeLogLabel = new System.Windows.Forms.Label();
             this.PickAndTestButton = new System.Windows.Forms.Button();
@@ -160,6 +156,8 @@
             this.HandrailDepthOffset = new System.Windows.Forms.TextBox();
             this.label37 = new System.Windows.Forms.Label();
             this.PostCCSwitchComboBox = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.InfillCCSwitchComboBox = new System.Windows.Forms.ComboBox();
             this.DividingOptionsGroupBox.SuspendLayout();
             this.LeftoverOptionsGroupBox.SuspendLayout();
             this.StepRoundingOptionsGroupBox.SuspendLayout();
@@ -176,21 +174,6 @@
             this.HandrailTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HandrailHeightUpDownNum)).BeginInit();
             this.SuspendLayout();
-            // 
-            // PickButton
-            // 
-            this.PickButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.structuresExtender.SetAttributeName(this.PickButton, null);
-            this.structuresExtender.SetAttributeTypeName(this.PickButton, null);
-            this.structuresExtender.SetBindPropertyName(this.PickButton, null);
-            this.PickButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.PickButton.Location = new System.Drawing.Point(12, 411);
-            this.PickButton.Name = "PickButton";
-            this.PickButton.Size = new System.Drawing.Size(105, 22);
-            this.PickButton.TabIndex = 0;
-            this.PickButton.Text = "Pick old";
-            this.PickButton.UseVisualStyleBackColor = true;
-            this.PickButton.Click += new System.EventHandler(this.PickButton_Click);
             // 
             // MaxStepLabel
             // 
@@ -1015,6 +998,8 @@
             this.structuresExtender.SetAttributeName(this.FillerTab, null);
             this.structuresExtender.SetAttributeTypeName(this.FillerTab, null);
             this.structuresExtender.SetBindPropertyName(this.FillerTab, null);
+            this.FillerTab.Controls.Add(this.label17);
+            this.FillerTab.Controls.Add(this.InfillCCSwitchComboBox);
             this.FillerTab.Controls.Add(this.InfillEndPointOffset);
             this.FillerTab.Controls.Add(this.InfillStartPointOffset);
             this.FillerTab.Controls.Add(this.InfillPlaneOffset);
@@ -1159,7 +1144,7 @@
             this.structuresExtender.SetAttributeTypeName(this.label8, null);
             this.label8.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.label8, null);
-            this.label8.Location = new System.Drawing.Point(321, 24);
+            this.label8.Location = new System.Drawing.Point(358, 55);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(102, 13);
             this.label8.TabIndex = 46;
@@ -1379,11 +1364,11 @@
             this.structuresExtender.SetAttributeName(this.InfillCustCompTextBox, "InfillComponentName");
             this.structuresExtender.SetAttributeTypeName(this.InfillCustCompTextBox, "String");
             this.structuresExtender.SetBindPropertyName(this.InfillCustCompTextBox, null);
-            this.InfillCustCompTextBox.Location = new System.Drawing.Point(429, 21);
+            this.InfillCustCompTextBox.Location = new System.Drawing.Point(466, 52);
             this.InfillCustCompTextBox.Name = "InfillCustCompTextBox";
             this.InfillCustCompTextBox.Size = new System.Drawing.Size(87, 20);
             this.InfillCustCompTextBox.TabIndex = 29;
-            this.InfillCustCompTextBox.Text = "CLMN45x55";
+            this.InfillCustCompTextBox.Text = "spileSection";
             // 
             // InfillMaterialCatalog
             // 
@@ -1404,12 +1389,14 @@
             this.structuresExtender.SetAttributeName(this.InfillComponentCatalog, null);
             this.structuresExtender.SetAttributeTypeName(this.InfillComponentCatalog, null);
             this.structuresExtender.SetBindPropertyName(this.InfillComponentCatalog, null);
-            this.InfillComponentCatalog.Location = new System.Drawing.Point(533, 21);
+            this.InfillComponentCatalog.Location = new System.Drawing.Point(559, 52);
             this.InfillComponentCatalog.Name = "InfillComponentCatalog";
             this.InfillComponentCatalog.SelectedName = "";
             this.InfillComponentCatalog.SelectedNumber = -2147483648;
             this.InfillComponentCatalog.Size = new System.Drawing.Size(24, 21);
             this.InfillComponentCatalog.TabIndex = 27;
+            this.InfillComponentCatalog.SelectClicked += new System.EventHandler(this.InfillComponentCatalog_SelectClicked);
+            this.InfillComponentCatalog.SelectionDone += new System.EventHandler(this.InfillComponentCatalog_SelectionDone);
             // 
             // InfillProfileCatalog
             // 
@@ -1440,7 +1427,6 @@
             this.HandrailTab.Controls.Add(this.label34);
             this.HandrailTab.Controls.Add(this.HandrailDepthComboBox);
             this.HandrailTab.Controls.Add(this.InsertHandrailButton);
-            this.HandrailTab.Controls.Add(this.label17);
             this.HandrailTab.Controls.Add(this.HandrailClassTextBox);
             this.HandrailTab.Controls.Add(this.HandrailFinishTextBox);
             this.HandrailTab.Controls.Add(this.HandrailMaterialTextBox);
@@ -1457,9 +1443,7 @@
             this.HandrailTab.Controls.Add(this.label23);
             this.HandrailTab.Controls.Add(this.label24);
             this.HandrailTab.Controls.Add(this.label25);
-            this.HandrailTab.Controls.Add(this.HandrailCustCompTextBox);
             this.HandrailTab.Controls.Add(this.HandrailMaterialCatalog);
-            this.HandrailTab.Controls.Add(this.HandrailComponentCatalog);
             this.HandrailTab.Controls.Add(this.HandrailProfileCatalog);
             this.HandrailTab.Location = new System.Drawing.Point(4, 22);
             this.HandrailTab.Name = "HandrailTab";
@@ -1555,18 +1539,6 @@
             this.InsertHandrailButton.Text = "Insert Handrail";
             this.InsertHandrailButton.UseVisualStyleBackColor = true;
             this.InsertHandrailButton.Click += new System.EventHandler(this.InsertHandrailButton_Click);
-            // 
-            // label17
-            // 
-            this.structuresExtender.SetAttributeName(this.label17, null);
-            this.structuresExtender.SetAttributeTypeName(this.label17, null);
-            this.label17.AutoSize = true;
-            this.structuresExtender.SetBindPropertyName(this.label17, null);
-            this.label17.Location = new System.Drawing.Point(330, 24);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(102, 13);
-            this.label17.TabIndex = 46;
-            this.label17.Text = "Custom Component:";
             // 
             // HandrailClassTextBox
             // 
@@ -1777,17 +1749,6 @@
             this.label25.TabIndex = 30;
             this.label25.Text = "Height:";
             // 
-            // HandrailCustCompTextBox
-            // 
-            this.structuresExtender.SetAttributeName(this.HandrailCustCompTextBox, "HandrailComponentName");
-            this.structuresExtender.SetAttributeTypeName(this.HandrailCustCompTextBox, "String");
-            this.structuresExtender.SetBindPropertyName(this.HandrailCustCompTextBox, null);
-            this.HandrailCustCompTextBox.Location = new System.Drawing.Point(438, 21);
-            this.HandrailCustCompTextBox.Name = "HandrailCustCompTextBox";
-            this.HandrailCustCompTextBox.Size = new System.Drawing.Size(89, 20);
-            this.HandrailCustCompTextBox.TabIndex = 29;
-            this.HandrailCustCompTextBox.Text = "CLMN45x55";
-            // 
             // HandrailMaterialCatalog
             // 
             this.structuresExtender.SetAttributeName(this.HandrailMaterialCatalog, null);
@@ -1801,18 +1762,6 @@
             this.HandrailMaterialCatalog.TabIndex = 28;
             this.HandrailMaterialCatalog.SelectClicked += new System.EventHandler(this.HandrailMaterialCatalog_SelectClicked);
             this.HandrailMaterialCatalog.SelectionDone += new System.EventHandler(this.HandrailMaterialCatalog_SelectionDone);
-            // 
-            // HandrailComponentCatalog
-            // 
-            this.structuresExtender.SetAttributeName(this.HandrailComponentCatalog, null);
-            this.structuresExtender.SetAttributeTypeName(this.HandrailComponentCatalog, null);
-            this.structuresExtender.SetBindPropertyName(this.HandrailComponentCatalog, null);
-            this.HandrailComponentCatalog.Location = new System.Drawing.Point(533, 21);
-            this.HandrailComponentCatalog.Name = "HandrailComponentCatalog";
-            this.HandrailComponentCatalog.SelectedName = "";
-            this.HandrailComponentCatalog.SelectedNumber = -2147483648;
-            this.HandrailComponentCatalog.Size = new System.Drawing.Size(24, 21);
-            this.HandrailComponentCatalog.TabIndex = 27;
             // 
             // HandrailProfileCatalog
             // 
@@ -2060,6 +2009,35 @@
             this.PostCCSwitchComboBox.Size = new System.Drawing.Size(73, 21);
             this.PostCCSwitchComboBox.TabIndex = 38;
             // 
+            // label17
+            // 
+            this.structuresExtender.SetAttributeName(this.label17, null);
+            this.structuresExtender.SetAttributeTypeName(this.label17, null);
+            this.label17.AutoSize = true;
+            this.structuresExtender.SetBindPropertyName(this.label17, null);
+            this.label17.Location = new System.Drawing.Point(340, 27);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(122, 13);
+            this.label17.TabIndex = 66;
+            this.label17.Text = "Use custom component:";
+            // 
+            // InfillCCSwitchComboBox
+            // 
+            this.structuresExtender.SetAttributeName(this.InfillCCSwitchComboBox, "InfillCCSwitch");
+            this.structuresExtender.SetAttributeTypeName(this.InfillCCSwitchComboBox, "Integer");
+            this.InfillCCSwitchComboBox.AutoCompleteCustomSource.AddRange(new string[] {
+            "No",
+            "Yes"});
+            this.structuresExtender.SetBindPropertyName(this.InfillCCSwitchComboBox, null);
+            this.InfillCCSwitchComboBox.FormattingEnabled = true;
+            this.InfillCCSwitchComboBox.Items.AddRange(new object[] {
+            "No",
+            "Yes"});
+            this.InfillCCSwitchComboBox.Location = new System.Drawing.Point(468, 24);
+            this.InfillCCSwitchComboBox.Name = "InfillCCSwitchComboBox";
+            this.InfillCCSwitchComboBox.Size = new System.Drawing.Size(73, 21);
+            this.InfillCCSwitchComboBox.TabIndex = 65;
+            // 
             // RailingUI
             // 
             this.structuresExtender.SetAttributeName(this, null);
@@ -2076,7 +2054,6 @@
             this.Controls.Add(this.PickAndTestButton);
             this.Controls.Add(this.RealTimeLogLabel);
             this.Controls.Add(this.MainTabControl);
-            this.Controls.Add(this.PickButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -2113,8 +2090,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button PickButton;
         private System.Windows.Forms.Label MaxStepLabel;
         private System.Windows.Forms.Label StartOffsetLabel;
         private System.Windows.Forms.Label EndOffsetLabel;
@@ -2189,7 +2164,6 @@
         private Tekla.Structures.Dialog.UIControls.MaterialCatalog InfillMaterialCatalog;
         private Tekla.Structures.Dialog.UIControls.ComponentCatalog InfillComponentCatalog;
         private Tekla.Structures.Dialog.UIControls.ProfileCatalog InfillProfileCatalog;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox HandrailClassTextBox;
         private System.Windows.Forms.TextBox HandrailFinishTextBox;
         private System.Windows.Forms.TextBox HandrailMaterialTextBox;
@@ -2206,9 +2180,7 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.TextBox HandrailCustCompTextBox;
         private Tekla.Structures.Dialog.UIControls.MaterialCatalog HandrailMaterialCatalog;
-        private Tekla.Structures.Dialog.UIControls.ComponentCatalog HandrailComponentCatalog;
         private Tekla.Structures.Dialog.UIControls.ProfileCatalog HandrailProfileCatalog;
         private System.Windows.Forms.Button InsertHandrailButton;
         private System.Windows.Forms.ComboBox PostDepthComboBox;
@@ -2245,6 +2217,8 @@
         private System.Windows.Forms.TextBox HandrailDepthOffset;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.ComboBox PostCCSwitchComboBox;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.ComboBox InfillCCSwitchComboBox;
     }
 }
 
