@@ -96,13 +96,15 @@ namespace RailingVN
             CustomPart customPart = new CustomPart(startPoint, new Point(startPoint.X, 100d, 0) );
             customPart.Name = pM.CustomComponentName;
             customPart.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
+            customPart.LoadAttributesFromFile(pM.CustomComponentAttributeFileName);
+
             customPart.Position.Depth = pM.Depth;
             customPart.Position.Rotation = pM.Rotation;
             customPart.Position.Plane = pM.Plane;
             customPart.Position.DepthOffset = pM.DepthOffset;
             customPart.Position.RotationOffset = pM.RotationOffset;
             customPart.Position.PlaneOffset = pM.PlaneOffset;
-
+            
             bool result = false;
             result = customPart.Insert();
         }
@@ -132,7 +134,6 @@ namespace RailingVN
             bool result = false;
             result = infillBeam.Insert();
         }
-
         public static void InsertInfillCC(Point startPoint, Point endPoint, InfillModel iM)
         {
             startPoint.Z = iM.Height;
@@ -140,11 +141,8 @@ namespace RailingVN
             CustomPart customPartInfill = new CustomPart(startPoint, endPoint);
             customPartInfill.Name = iM.CustomComponentName;
             customPartInfill.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-            //customPartInfill.SetAttribute("H2",1435.0);
-            //customPartInfill.SetAttribute("St", 110.0);
-            //customPartInfill.SetAttribute("h1", 0.0);
-
-
+            customPartInfill.LoadAttributesFromFile(iM.CustomComponentAttributeFileName);
+            
             customPartInfill.Position.Depth = iM.Depth;
             customPartInfill.Position.Rotation = iM.Rotation;
             customPartInfill.Position.Plane = iM.Plane;
@@ -291,7 +289,7 @@ namespace RailingVN
         public string Finish { get; set; } = "PAINT";
         public string Class { get; set; } = "2";
         public string CustomComponentName { get; set; } = "CLMN45x55";
-
+        public string CustomComponentAttributeFileName { get; set; } = "standard";
 
         public Position.DepthEnum Depth { get; set; } = Position.DepthEnum.MIDDLE;
         public Position.RotationEnum Rotation { get; set; } = Position.RotationEnum.BELOW;
@@ -313,7 +311,7 @@ namespace RailingVN
         public string Finish { get; set; } = "clear";
         public string Class { get; set; } = "5";
         public string CustomComponentName { get; set; } = "spileSection";
-
+        public string CustomComponentAttributeFileName { get; set; } = "standard";
         public Position.DepthEnum Depth { get; set; } = Position.DepthEnum.BEHIND;
         public Position.RotationEnum Rotation { get; set; } = Position.RotationEnum.BACK;
         public Position.PlaneEnum Plane { get; set; } = Position.PlaneEnum.MIDDLE;

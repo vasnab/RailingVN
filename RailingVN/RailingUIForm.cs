@@ -14,6 +14,7 @@ using T3D = Tekla.Structures.Geometry3d;
 using Tekla.Structures.Model.UI;
 using Tekla.Structures.Dialog.UIControls;
 using Tekla.Structures.Dialog;
+using System.Collections;
 
 namespace RailingVN
 {
@@ -68,6 +69,10 @@ namespace RailingVN
             SetAttributeValue(PostPlaneOffset, PM.PlaneOffset.ToString());
             SetAttributeValue(PostCustCompTextBox, PM.CustomComponentName);
             
+            //preloading list of attribute files into post combobox
+            var atrFileExtension = "p_" + PostCustCompTextBox.Text;
+            var atrFiles = EnvironmentFiles.GetMultiDirectoryFileList(atrFileExtension);
+            PostCCAttributesComboBox.DataSource = atrFiles;
 
             SetAttributeValue(InfillPartPrefixTextBox, IM.PartPrefix);
             SetAttributeValue(InfillAsmPrefixTextBox, IM.AssemblyPrefix);
@@ -82,6 +87,11 @@ namespace RailingVN
             SetAttributeValue(InfillStartPointOffset, IM.StartPointOffsetDx.ToString());
             SetAttributeValue(InfillEndPointOffset, IM.EndPointOffsetDx.ToString());
             SetAttributeValue(InfillCustCompTextBox, IM.CustomComponentName);
+
+            //preloading list of attribute files into infill combobox
+            var atrFileExtensionInfill = "p_" + InfillCustCompTextBox.Text;
+            var atrInfillFiles = EnvironmentFiles.GetMultiDirectoryFileList(atrFileExtensionInfill);
+            InfillCCAttributesComboBox.DataSource = atrInfillFiles;
 
 
             SetAttributeValue(HandrailPartPrefixTextBox, HM.PartPrefix);
@@ -760,7 +770,7 @@ namespace RailingVN
 
         private void PostСomponentCatalog_SelectClicked(object sender, EventArgs e)
         {
-            PostСomponentCatalog.SelectedName =PostCustCompTextBox.Text;
+            PostСomponentCatalog.SelectedName = PostCustCompTextBox.Text;
         }
 
         private void PostСomponentCatalog_SelectionDone(object sender, EventArgs e)
@@ -771,16 +781,47 @@ namespace RailingVN
         private void PostCustCompTextBox_TextChanged(object sender, EventArgs e)
         {
             PM.CustomComponentName = PostCustCompTextBox.Text;
+
+            var atrFileExtension = "p_" + PostCustCompTextBox.Text;
+            var atrFiles = EnvironmentFiles.GetMultiDirectoryFileList(atrFileExtension);
+            PostCCAttributesComboBox.DataSource = atrFiles;
+            
+
         }
 
         private void InfillComponentCatalog_SelectClicked(object sender, EventArgs e)
         {
-            IM.CustomComponentName = InfillCustCompTextBox.Text;
+            InfillComponentCatalog.SelectedName = InfillCustCompTextBox.Text;
         }
 
         private void InfillComponentCatalog_SelectionDone(object sender, EventArgs e)
         {
             SetAttributeValue(InfillCustCompTextBox, InfillComponentCatalog.SelectedName);
+        }
+
+        private void InfillCustCompTextBox_TextChanged(object sender, EventArgs e)
+        {
+            IM.CustomComponentName = InfillCustCompTextBox.Text;
+
+            var atrFileExtensionInfill = "p_" + InfillCustCompTextBox.Text;
+            var atrInfillFiles = EnvironmentFiles.GetMultiDirectoryFileList(atrFileExtensionInfill);
+            InfillCCAttributesComboBox.DataSource = atrInfillFiles;
+        }
+
+        private void InfillCCAttributesComboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            IM.CustomComponentAttributeFileName = (string)InfillCCAttributesComboBox.SelectedValue;
+        }
+        
+        private void PostCCAttributesComboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            PM.CustomComponentAttributeFileName = (string)PostCCAttributesComboBox.SelectedValue;
+        }
+
+        
+        private void OnTopSwitch_CheckedChanged(object sender, EventArgs e)
+        {
+            this.TopMost = OnTopSwitch.Checked;
         }
     }
 }

@@ -55,6 +55,11 @@
             this.MainTabControl = new System.Windows.Forms.TabControl();
             this.SetupTab = new System.Windows.Forms.TabPage();
             this.PostTab = new System.Windows.Forms.TabPage();
+            this.label37 = new System.Windows.Forms.Label();
+            this.PostCCSwitchComboBox = new System.Windows.Forms.ComboBox();
+            this.PostPlaneOffset = new System.Windows.Forms.TextBox();
+            this.PostRotationOffset = new System.Windows.Forms.TextBox();
+            this.PostDepthOffset = new System.Windows.Forms.TextBox();
             this.PostPlaneComboBox = new System.Windows.Forms.ComboBox();
             this.PostRotationComboBox = new System.Windows.Forms.ComboBox();
             this.label28 = new System.Windows.Forms.Label();
@@ -83,6 +88,13 @@
             this.PostСomponentCatalog = new Tekla.Structures.Dialog.UIControls.ComponentCatalog();
             this.PostProfileCatalog = new Tekla.Structures.Dialog.UIControls.ProfileCatalog();
             this.FillerTab = new System.Windows.Forms.TabPage();
+            this.label17 = new System.Windows.Forms.Label();
+            this.InfillCCSwitchComboBox = new System.Windows.Forms.ComboBox();
+            this.InfillEndPointOffset = new System.Windows.Forms.TextBox();
+            this.InfillStartPointOffset = new System.Windows.Forms.TextBox();
+            this.InfillPlaneOffset = new System.Windows.Forms.TextBox();
+            this.InfillRotationOffset = new System.Windows.Forms.TextBox();
+            this.InfillDepthOffset = new System.Windows.Forms.TextBox();
             this.label36 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
             this.InfillPlaneComboBox = new System.Windows.Forms.ComboBox();
@@ -113,6 +125,9 @@
             this.InfillComponentCatalog = new Tekla.Structures.Dialog.UIControls.ComponentCatalog();
             this.InfillProfileCatalog = new Tekla.Structures.Dialog.UIControls.ProfileCatalog();
             this.HandrailTab = new System.Windows.Forms.TabPage();
+            this.HandrailPlaneOffset = new System.Windows.Forms.TextBox();
+            this.HandrailRotationOffset = new System.Windows.Forms.TextBox();
+            this.HandrailDepthOffset = new System.Windows.Forms.TextBox();
             this.HandrailPlaneComboBox = new System.Windows.Forms.ComboBox();
             this.HandrailRotationComboBox = new System.Windows.Forms.ComboBox();
             this.label32 = new System.Windows.Forms.Label();
@@ -143,21 +158,11 @@
             this.ForceUpdateButton = new System.Windows.Forms.Button();
             this.InsertRSButton = new System.Windows.Forms.Button();
             this.saveLoad1 = new Tekla.Structures.Dialog.UIControls.SaveLoad();
-            this.PostDepthOffset = new System.Windows.Forms.TextBox();
-            this.PostRotationOffset = new System.Windows.Forms.TextBox();
-            this.PostPlaneOffset = new System.Windows.Forms.TextBox();
-            this.InfillPlaneOffset = new System.Windows.Forms.TextBox();
-            this.InfillRotationOffset = new System.Windows.Forms.TextBox();
-            this.InfillDepthOffset = new System.Windows.Forms.TextBox();
-            this.InfillEndPointOffset = new System.Windows.Forms.TextBox();
-            this.InfillStartPointOffset = new System.Windows.Forms.TextBox();
-            this.HandrailPlaneOffset = new System.Windows.Forms.TextBox();
-            this.HandrailRotationOffset = new System.Windows.Forms.TextBox();
-            this.HandrailDepthOffset = new System.Windows.Forms.TextBox();
-            this.label37 = new System.Windows.Forms.Label();
-            this.PostCCSwitchComboBox = new System.Windows.Forms.ComboBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.InfillCCSwitchComboBox = new System.Windows.Forms.ComboBox();
+            this.OnTopSwitch = new System.Windows.Forms.CheckBox();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
+            this.PostCCAttributesComboBox = new System.Windows.Forms.ComboBox();
+            this.InfillCCAttributesComboBox = new System.Windows.Forms.ComboBox();
             this.DividingOptionsGroupBox.SuspendLayout();
             this.LeftoverOptionsGroupBox.SuspendLayout();
             this.StepRoundingOptionsGroupBox.SuspendLayout();
@@ -181,7 +186,7 @@
             this.structuresExtender.SetAttributeTypeName(this.MaxStepLabel, null);
             this.MaxStepLabel.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.MaxStepLabel, null);
-            this.MaxStepLabel.Location = new System.Drawing.Point(43, 25);
+            this.MaxStepLabel.Location = new System.Drawing.Point(33, 25);
             this.MaxStepLabel.Name = "MaxStepLabel";
             this.MaxStepLabel.Size = new System.Drawing.Size(52, 13);
             this.MaxStepLabel.TabIndex = 1;
@@ -193,7 +198,7 @@
             this.structuresExtender.SetAttributeTypeName(this.StartOffsetLabel, null);
             this.StartOffsetLabel.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.StartOffsetLabel, null);
-            this.StartOffsetLabel.Location = new System.Drawing.Point(37, 95);
+            this.StartOffsetLabel.Location = new System.Drawing.Point(27, 95);
             this.StartOffsetLabel.Name = "StartOffsetLabel";
             this.StartOffsetLabel.Size = new System.Drawing.Size(60, 13);
             this.StartOffsetLabel.TabIndex = 3;
@@ -205,7 +210,7 @@
             this.structuresExtender.SetAttributeTypeName(this.EndOffsetLabel, null);
             this.EndOffsetLabel.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.EndOffsetLabel, null);
-            this.EndOffsetLabel.Location = new System.Drawing.Point(38, 129);
+            this.EndOffsetLabel.Location = new System.Drawing.Point(28, 129);
             this.EndOffsetLabel.Name = "EndOffsetLabel";
             this.EndOffsetLabel.Size = new System.Drawing.Size(57, 13);
             this.EndOffsetLabel.TabIndex = 5;
@@ -217,7 +222,7 @@
             this.structuresExtender.SetAttributeTypeName(this.ManualStepLabel, null);
             this.ManualStepLabel.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.ManualStepLabel, null);
-            this.ManualStepLabel.Location = new System.Drawing.Point(28, 58);
+            this.ManualStepLabel.Location = new System.Drawing.Point(18, 58);
             this.ManualStepLabel.Name = "ManualStepLabel";
             this.ManualStepLabel.Size = new System.Drawing.Size(67, 13);
             this.ManualStepLabel.TabIndex = 7;
@@ -450,7 +455,7 @@
             this.structuresExtender.SetAttributeName(this.MaxStepNumericUpDown, null);
             this.structuresExtender.SetAttributeTypeName(this.MaxStepNumericUpDown, null);
             this.structuresExtender.SetBindPropertyName(this.MaxStepNumericUpDown, null);
-            this.MaxStepNumericUpDown.Location = new System.Drawing.Point(101, 23);
+            this.MaxStepNumericUpDown.Location = new System.Drawing.Point(91, 23);
             this.MaxStepNumericUpDown.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -479,7 +484,7 @@
             this.structuresExtender.SetAttributeName(this.ManualStepNumericUpDown, null);
             this.structuresExtender.SetAttributeTypeName(this.ManualStepNumericUpDown, null);
             this.structuresExtender.SetBindPropertyName(this.ManualStepNumericUpDown, null);
-            this.ManualStepNumericUpDown.Location = new System.Drawing.Point(103, 55);
+            this.ManualStepNumericUpDown.Location = new System.Drawing.Point(93, 55);
             this.ManualStepNumericUpDown.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -508,7 +513,7 @@
             this.structuresExtender.SetAttributeName(this.StartOffsetNumericUpDown, null);
             this.structuresExtender.SetAttributeTypeName(this.StartOffsetNumericUpDown, null);
             this.structuresExtender.SetBindPropertyName(this.StartOffsetNumericUpDown, null);
-            this.StartOffsetNumericUpDown.Location = new System.Drawing.Point(103, 93);
+            this.StartOffsetNumericUpDown.Location = new System.Drawing.Point(93, 93);
             this.StartOffsetNumericUpDown.Maximum = new decimal(new int[] {
             500,
             0,
@@ -537,7 +542,7 @@
             this.structuresExtender.SetAttributeName(this.EndOffsetNumericUpDown, null);
             this.structuresExtender.SetAttributeTypeName(this.EndOffsetNumericUpDown, null);
             this.structuresExtender.SetBindPropertyName(this.EndOffsetNumericUpDown, null);
-            this.EndOffsetNumericUpDown.Location = new System.Drawing.Point(103, 127);
+            this.EndOffsetNumericUpDown.Location = new System.Drawing.Point(93, 127);
             this.EndOffsetNumericUpDown.Maximum = new decimal(new int[] {
             500,
             0,
@@ -606,6 +611,8 @@
             this.structuresExtender.SetAttributeName(this.PostTab, null);
             this.structuresExtender.SetAttributeTypeName(this.PostTab, null);
             this.structuresExtender.SetBindPropertyName(this.PostTab, null);
+            this.PostTab.Controls.Add(this.PostCCAttributesComboBox);
+            this.PostTab.Controls.Add(this.label38);
             this.PostTab.Controls.Add(this.label37);
             this.PostTab.Controls.Add(this.PostCCSwitchComboBox);
             this.PostTab.Controls.Add(this.PostPlaneOffset);
@@ -646,11 +653,75 @@
             this.PostTab.Text = "Post";
             this.PostTab.UseVisualStyleBackColor = true;
             // 
+            // label37
+            // 
+            this.structuresExtender.SetAttributeName(this.label37, null);
+            this.structuresExtender.SetAttributeTypeName(this.label37, null);
+            this.label37.AutoSize = true;
+            this.structuresExtender.SetBindPropertyName(this.label37, null);
+            this.label37.Location = new System.Drawing.Point(326, 20);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(122, 13);
+            this.label37.TabIndex = 39;
+            this.label37.Text = "Use custom component:";
+            // 
+            // PostCCSwitchComboBox
+            // 
+            this.structuresExtender.SetAttributeName(this.PostCCSwitchComboBox, "PostCCSwitch");
+            this.structuresExtender.SetAttributeTypeName(this.PostCCSwitchComboBox, "Integer");
+            this.structuresExtender.SetBindPropertyName(this.PostCCSwitchComboBox, null);
+            this.PostCCSwitchComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.PostCCSwitchComboBox.FormattingEnabled = true;
+            this.PostCCSwitchComboBox.Items.AddRange(new object[] {
+            "No",
+            "Yes"});
+            this.PostCCSwitchComboBox.Location = new System.Drawing.Point(454, 17);
+            this.PostCCSwitchComboBox.Name = "PostCCSwitchComboBox";
+            this.PostCCSwitchComboBox.Size = new System.Drawing.Size(73, 21);
+            this.PostCCSwitchComboBox.TabIndex = 38;
+            // 
+            // PostPlaneOffset
+            // 
+            this.structuresExtender.SetAttributeName(this.PostPlaneOffset, "PostPlaneOffset");
+            this.structuresExtender.SetAttributeTypeName(this.PostPlaneOffset, "String");
+            this.structuresExtender.SetBindPropertyName(this.PostPlaneOffset, null);
+            this.PostPlaneOffset.Location = new System.Drawing.Point(517, 261);
+            this.PostPlaneOffset.Name = "PostPlaneOffset";
+            this.PostPlaneOffset.Size = new System.Drawing.Size(60, 20);
+            this.PostPlaneOffset.TabIndex = 37;
+            this.PostPlaneOffset.Text = "0";
+            this.PostPlaneOffset.TextChanged += new System.EventHandler(this.PostPlaneOffset_TextChanged);
+            // 
+            // PostRotationOffset
+            // 
+            this.structuresExtender.SetAttributeName(this.PostRotationOffset, "PostRotationOffset");
+            this.structuresExtender.SetAttributeTypeName(this.PostRotationOffset, "String");
+            this.structuresExtender.SetBindPropertyName(this.PostRotationOffset, null);
+            this.PostRotationOffset.Location = new System.Drawing.Point(517, 233);
+            this.PostRotationOffset.Name = "PostRotationOffset";
+            this.PostRotationOffset.Size = new System.Drawing.Size(60, 20);
+            this.PostRotationOffset.TabIndex = 36;
+            this.PostRotationOffset.Text = "0";
+            this.PostRotationOffset.TextChanged += new System.EventHandler(this.PostRotationOffset_TextChanged);
+            // 
+            // PostDepthOffset
+            // 
+            this.structuresExtender.SetAttributeName(this.PostDepthOffset, "PostDepthOffset");
+            this.structuresExtender.SetAttributeTypeName(this.PostDepthOffset, "String");
+            this.structuresExtender.SetBindPropertyName(this.PostDepthOffset, null);
+            this.PostDepthOffset.Location = new System.Drawing.Point(517, 205);
+            this.PostDepthOffset.Name = "PostDepthOffset";
+            this.PostDepthOffset.Size = new System.Drawing.Size(60, 20);
+            this.PostDepthOffset.TabIndex = 35;
+            this.PostDepthOffset.Text = "0";
+            this.PostDepthOffset.TextChanged += new System.EventHandler(this.PostDepthOffset_TextChanged);
+            // 
             // PostPlaneComboBox
             // 
             this.structuresExtender.SetAttributeName(this.PostPlaneComboBox, "PostPlane");
             this.structuresExtender.SetAttributeTypeName(this.PostPlaneComboBox, "Integer");
             this.structuresExtender.SetBindPropertyName(this.PostPlaneComboBox, null);
+            this.PostPlaneComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PostPlaneComboBox.FormattingEnabled = true;
             this.PostPlaneComboBox.Location = new System.Drawing.Point(417, 261);
             this.PostPlaneComboBox.Name = "PostPlaneComboBox";
@@ -663,6 +734,7 @@
             this.structuresExtender.SetAttributeName(this.PostRotationComboBox, "PostRotation");
             this.structuresExtender.SetAttributeTypeName(this.PostRotationComboBox, "Integer");
             this.structuresExtender.SetBindPropertyName(this.PostRotationComboBox, null);
+            this.PostRotationComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PostRotationComboBox.FormattingEnabled = true;
             this.PostRotationComboBox.Location = new System.Drawing.Point(417, 233);
             this.PostRotationComboBox.Name = "PostRotationComboBox";
@@ -711,6 +783,7 @@
             this.structuresExtender.SetAttributeName(this.PostDepthComboBox, "PostDepth");
             this.structuresExtender.SetAttributeTypeName(this.PostDepthComboBox, "Integer");
             this.structuresExtender.SetBindPropertyName(this.PostDepthComboBox, null);
+            this.PostDepthComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PostDepthComboBox.FormattingEnabled = true;
             this.PostDepthComboBox.Location = new System.Drawing.Point(417, 205);
             this.PostDepthComboBox.Name = "PostDepthComboBox";
@@ -724,7 +797,7 @@
             this.structuresExtender.SetAttributeTypeName(this.label7, null);
             this.label7.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.label7, null);
-            this.label7.Location = new System.Drawing.Point(345, 56);
+            this.label7.Location = new System.Drawing.Point(346, 56);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(102, 13);
             this.label7.TabIndex = 25;
@@ -944,7 +1017,7 @@
             this.structuresExtender.SetAttributeName(this.PostCustCompTextBox, "PostComponentName");
             this.structuresExtender.SetAttributeTypeName(this.PostCustCompTextBox, "String");
             this.structuresExtender.SetBindPropertyName(this.PostCustCompTextBox, null);
-            this.PostCustCompTextBox.Location = new System.Drawing.Point(453, 53);
+            this.PostCustCompTextBox.Location = new System.Drawing.Point(454, 53);
             this.PostCustCompTextBox.Name = "PostCustCompTextBox";
             this.PostCustCompTextBox.Size = new System.Drawing.Size(94, 20);
             this.PostCustCompTextBox.TabIndex = 5;
@@ -970,7 +1043,7 @@
             this.structuresExtender.SetAttributeName(this.PostСomponentCatalog, null);
             this.structuresExtender.SetAttributeTypeName(this.PostСomponentCatalog, null);
             this.structuresExtender.SetBindPropertyName(this.PostСomponentCatalog, null);
-            this.PostСomponentCatalog.Location = new System.Drawing.Point(553, 52);
+            this.PostСomponentCatalog.Location = new System.Drawing.Point(566, 53);
             this.PostСomponentCatalog.Name = "PostСomponentCatalog";
             this.PostСomponentCatalog.SelectedName = "";
             this.PostСomponentCatalog.SelectedNumber = -2147483648;
@@ -998,6 +1071,8 @@
             this.structuresExtender.SetAttributeName(this.FillerTab, null);
             this.structuresExtender.SetAttributeTypeName(this.FillerTab, null);
             this.structuresExtender.SetBindPropertyName(this.FillerTab, null);
+            this.FillerTab.Controls.Add(this.InfillCCAttributesComboBox);
+            this.FillerTab.Controls.Add(this.label39);
             this.FillerTab.Controls.Add(this.label17);
             this.FillerTab.Controls.Add(this.InfillCCSwitchComboBox);
             this.FillerTab.Controls.Add(this.InfillEndPointOffset);
@@ -1042,13 +1117,103 @@
             this.FillerTab.Text = "Filler Panel or Spile";
             this.FillerTab.UseVisualStyleBackColor = true;
             // 
+            // label17
+            // 
+            this.structuresExtender.SetAttributeName(this.label17, null);
+            this.structuresExtender.SetAttributeTypeName(this.label17, null);
+            this.label17.AutoSize = true;
+            this.structuresExtender.SetBindPropertyName(this.label17, null);
+            this.label17.Location = new System.Drawing.Point(326, 20);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(122, 13);
+            this.label17.TabIndex = 66;
+            this.label17.Text = "Use custom component:";
+            // 
+            // InfillCCSwitchComboBox
+            // 
+            this.structuresExtender.SetAttributeName(this.InfillCCSwitchComboBox, "InfillCCSwitch");
+            this.structuresExtender.SetAttributeTypeName(this.InfillCCSwitchComboBox, "Integer");
+            this.InfillCCSwitchComboBox.AutoCompleteCustomSource.AddRange(new string[] {
+            "No",
+            "Yes"});
+            this.structuresExtender.SetBindPropertyName(this.InfillCCSwitchComboBox, null);
+            this.InfillCCSwitchComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.InfillCCSwitchComboBox.FormattingEnabled = true;
+            this.InfillCCSwitchComboBox.Items.AddRange(new object[] {
+            "No",
+            "Yes"});
+            this.InfillCCSwitchComboBox.Location = new System.Drawing.Point(454, 17);
+            this.InfillCCSwitchComboBox.Name = "InfillCCSwitchComboBox";
+            this.InfillCCSwitchComboBox.Size = new System.Drawing.Size(73, 21);
+            this.InfillCCSwitchComboBox.TabIndex = 65;
+            // 
+            // InfillEndPointOffset
+            // 
+            this.structuresExtender.SetAttributeName(this.InfillEndPointOffset, "InfillEndPointDx");
+            this.structuresExtender.SetAttributeTypeName(this.InfillEndPointOffset, "String");
+            this.structuresExtender.SetBindPropertyName(this.InfillEndPointOffset, null);
+            this.InfillEndPointOffset.Location = new System.Drawing.Point(516, 167);
+            this.InfillEndPointOffset.Name = "InfillEndPointOffset";
+            this.InfillEndPointOffset.Size = new System.Drawing.Size(60, 20);
+            this.InfillEndPointOffset.TabIndex = 64;
+            this.InfillEndPointOffset.Text = "-10";
+            this.InfillEndPointOffset.TextChanged += new System.EventHandler(this.InfillEndPointOffset_TextChanged);
+            // 
+            // InfillStartPointOffset
+            // 
+            this.structuresExtender.SetAttributeName(this.InfillStartPointOffset, "InfillStartPointDx");
+            this.structuresExtender.SetAttributeTypeName(this.InfillStartPointOffset, "String");
+            this.structuresExtender.SetBindPropertyName(this.InfillStartPointOffset, null);
+            this.InfillStartPointOffset.Location = new System.Drawing.Point(516, 139);
+            this.InfillStartPointOffset.Name = "InfillStartPointOffset";
+            this.InfillStartPointOffset.Size = new System.Drawing.Size(60, 20);
+            this.InfillStartPointOffset.TabIndex = 63;
+            this.InfillStartPointOffset.Text = "10";
+            this.InfillStartPointOffset.TextChanged += new System.EventHandler(this.InfillStartPointOffset_TextChanged);
+            // 
+            // InfillPlaneOffset
+            // 
+            this.structuresExtender.SetAttributeName(this.InfillPlaneOffset, "InfillPlaneOffset");
+            this.structuresExtender.SetAttributeTypeName(this.InfillPlaneOffset, "String");
+            this.structuresExtender.SetBindPropertyName(this.InfillPlaneOffset, null);
+            this.InfillPlaneOffset.Location = new System.Drawing.Point(517, 261);
+            this.InfillPlaneOffset.Name = "InfillPlaneOffset";
+            this.InfillPlaneOffset.Size = new System.Drawing.Size(60, 20);
+            this.InfillPlaneOffset.TabIndex = 62;
+            this.InfillPlaneOffset.Text = "20";
+            this.InfillPlaneOffset.TextChanged += new System.EventHandler(this.InfillPlaneOffset_TextChanged);
+            // 
+            // InfillRotationOffset
+            // 
+            this.structuresExtender.SetAttributeName(this.InfillRotationOffset, "InfillRotationOffset");
+            this.structuresExtender.SetAttributeTypeName(this.InfillRotationOffset, "String");
+            this.structuresExtender.SetBindPropertyName(this.InfillRotationOffset, null);
+            this.InfillRotationOffset.Location = new System.Drawing.Point(517, 233);
+            this.InfillRotationOffset.Name = "InfillRotationOffset";
+            this.InfillRotationOffset.Size = new System.Drawing.Size(60, 20);
+            this.InfillRotationOffset.TabIndex = 61;
+            this.InfillRotationOffset.Text = "0";
+            this.InfillRotationOffset.TextChanged += new System.EventHandler(this.InfillRotationOffset_TextChanged);
+            // 
+            // InfillDepthOffset
+            // 
+            this.structuresExtender.SetAttributeName(this.InfillDepthOffset, "InfillDepthOffset");
+            this.structuresExtender.SetAttributeTypeName(this.InfillDepthOffset, "String");
+            this.structuresExtender.SetBindPropertyName(this.InfillDepthOffset, null);
+            this.InfillDepthOffset.Location = new System.Drawing.Point(517, 205);
+            this.InfillDepthOffset.Name = "InfillDepthOffset";
+            this.InfillDepthOffset.Size = new System.Drawing.Size(60, 20);
+            this.InfillDepthOffset.TabIndex = 60;
+            this.InfillDepthOffset.Text = "0";
+            this.InfillDepthOffset.TextChanged += new System.EventHandler(this.InfillDepthOffset_TextChanged);
+            // 
             // label36
             // 
             this.structuresExtender.SetAttributeName(this.label36, null);
             this.structuresExtender.SetAttributeTypeName(this.label36, null);
             this.label36.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.label36, null);
-            this.label36.Location = new System.Drawing.Point(411, 169);
+            this.label36.Location = new System.Drawing.Point(411, 171);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(97, 13);
             this.label36.TabIndex = 59;
@@ -1060,7 +1225,7 @@
             this.structuresExtender.SetAttributeTypeName(this.label35, null);
             this.label35.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.label35, null);
-            this.label35.Location = new System.Drawing.Point(408, 138);
+            this.label35.Location = new System.Drawing.Point(408, 143);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(100, 13);
             this.label35.TabIndex = 58;
@@ -1071,8 +1236,9 @@
             this.structuresExtender.SetAttributeName(this.InfillPlaneComboBox, "InfillPlane");
             this.structuresExtender.SetAttributeTypeName(this.InfillPlaneComboBox, "Integer");
             this.structuresExtender.SetBindPropertyName(this.InfillPlaneComboBox, null);
+            this.InfillPlaneComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.InfillPlaneComboBox.FormattingEnabled = true;
-            this.InfillPlaneComboBox.Location = new System.Drawing.Point(417, 262);
+            this.InfillPlaneComboBox.Location = new System.Drawing.Point(417, 261);
             this.InfillPlaneComboBox.Name = "InfillPlaneComboBox";
             this.InfillPlaneComboBox.Size = new System.Drawing.Size(91, 21);
             this.InfillPlaneComboBox.TabIndex = 54;
@@ -1083,8 +1249,9 @@
             this.structuresExtender.SetAttributeName(this.InfillRotationComboBox, "InfillRotation");
             this.structuresExtender.SetAttributeTypeName(this.InfillRotationComboBox, "Integer");
             this.structuresExtender.SetBindPropertyName(this.InfillRotationComboBox, null);
+            this.InfillRotationComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.InfillRotationComboBox.FormattingEnabled = true;
-            this.InfillRotationComboBox.Location = new System.Drawing.Point(417, 234);
+            this.InfillRotationComboBox.Location = new System.Drawing.Point(417, 233);
             this.InfillRotationComboBox.Name = "InfillRotationComboBox";
             this.InfillRotationComboBox.Size = new System.Drawing.Size(91, 21);
             this.InfillRotationComboBox.TabIndex = 52;
@@ -1096,7 +1263,7 @@
             this.structuresExtender.SetAttributeTypeName(this.label29, null);
             this.label29.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.label29, null);
-            this.label29.Location = new System.Drawing.Point(360, 266);
+            this.label29.Location = new System.Drawing.Point(360, 265);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(51, 13);
             this.label29.TabIndex = 50;
@@ -1108,7 +1275,7 @@
             this.structuresExtender.SetAttributeTypeName(this.label30, null);
             this.label30.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.label30, null);
-            this.label30.Location = new System.Drawing.Point(364, 238);
+            this.label30.Location = new System.Drawing.Point(364, 237);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(47, 13);
             this.label30.TabIndex = 49;
@@ -1131,6 +1298,7 @@
             this.structuresExtender.SetAttributeName(this.InfillDepthComboBox, "InfillDepth");
             this.structuresExtender.SetAttributeTypeName(this.InfillDepthComboBox, "Integer");
             this.structuresExtender.SetBindPropertyName(this.InfillDepthComboBox, null);
+            this.InfillDepthComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.InfillDepthComboBox.FormattingEnabled = true;
             this.InfillDepthComboBox.Location = new System.Drawing.Point(417, 205);
             this.InfillDepthComboBox.Name = "InfillDepthComboBox";
@@ -1144,7 +1312,7 @@
             this.structuresExtender.SetAttributeTypeName(this.label8, null);
             this.label8.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.label8, null);
-            this.label8.Location = new System.Drawing.Point(358, 55);
+            this.label8.Location = new System.Drawing.Point(346, 56);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(102, 13);
             this.label8.TabIndex = 46;
@@ -1364,11 +1532,12 @@
             this.structuresExtender.SetAttributeName(this.InfillCustCompTextBox, "InfillComponentName");
             this.structuresExtender.SetAttributeTypeName(this.InfillCustCompTextBox, "String");
             this.structuresExtender.SetBindPropertyName(this.InfillCustCompTextBox, null);
-            this.InfillCustCompTextBox.Location = new System.Drawing.Point(466, 52);
+            this.InfillCustCompTextBox.Location = new System.Drawing.Point(454, 53);
             this.InfillCustCompTextBox.Name = "InfillCustCompTextBox";
-            this.InfillCustCompTextBox.Size = new System.Drawing.Size(87, 20);
+            this.InfillCustCompTextBox.Size = new System.Drawing.Size(94, 20);
             this.InfillCustCompTextBox.TabIndex = 29;
             this.InfillCustCompTextBox.Text = "spileSection";
+            this.InfillCustCompTextBox.TextChanged += new System.EventHandler(this.InfillCustCompTextBox_TextChanged);
             // 
             // InfillMaterialCatalog
             // 
@@ -1389,7 +1558,7 @@
             this.structuresExtender.SetAttributeName(this.InfillComponentCatalog, null);
             this.structuresExtender.SetAttributeTypeName(this.InfillComponentCatalog, null);
             this.structuresExtender.SetBindPropertyName(this.InfillComponentCatalog, null);
-            this.InfillComponentCatalog.Location = new System.Drawing.Point(559, 52);
+            this.InfillComponentCatalog.Location = new System.Drawing.Point(566, 53);
             this.InfillComponentCatalog.Name = "InfillComponentCatalog";
             this.InfillComponentCatalog.SelectedName = "";
             this.InfillComponentCatalog.SelectedNumber = -2147483648;
@@ -1453,13 +1622,50 @@
             this.HandrailTab.Text = "Handrail";
             this.HandrailTab.UseVisualStyleBackColor = true;
             // 
+            // HandrailPlaneOffset
+            // 
+            this.structuresExtender.SetAttributeName(this.HandrailPlaneOffset, "HandrailPlaneOffset");
+            this.structuresExtender.SetAttributeTypeName(this.HandrailPlaneOffset, "String");
+            this.structuresExtender.SetBindPropertyName(this.HandrailPlaneOffset, null);
+            this.HandrailPlaneOffset.Location = new System.Drawing.Point(517, 261);
+            this.HandrailPlaneOffset.Name = "HandrailPlaneOffset";
+            this.HandrailPlaneOffset.Size = new System.Drawing.Size(60, 20);
+            this.HandrailPlaneOffset.TabIndex = 65;
+            this.HandrailPlaneOffset.Text = "0";
+            this.HandrailPlaneOffset.TextChanged += new System.EventHandler(this.HandrailPlaneOffset_TextChanged);
+            // 
+            // HandrailRotationOffset
+            // 
+            this.structuresExtender.SetAttributeName(this.HandrailRotationOffset, "HandrailRotationOffset");
+            this.structuresExtender.SetAttributeTypeName(this.HandrailRotationOffset, "String");
+            this.structuresExtender.SetBindPropertyName(this.HandrailRotationOffset, null);
+            this.HandrailRotationOffset.Location = new System.Drawing.Point(517, 233);
+            this.HandrailRotationOffset.Name = "HandrailRotationOffset";
+            this.HandrailRotationOffset.Size = new System.Drawing.Size(60, 20);
+            this.HandrailRotationOffset.TabIndex = 64;
+            this.HandrailRotationOffset.Text = "0";
+            this.HandrailRotationOffset.TextChanged += new System.EventHandler(this.HandrailRotationOffset_TextChanged);
+            // 
+            // HandrailDepthOffset
+            // 
+            this.structuresExtender.SetAttributeName(this.HandrailDepthOffset, "HandrailDepthOffset");
+            this.structuresExtender.SetAttributeTypeName(this.HandrailDepthOffset, "String");
+            this.structuresExtender.SetBindPropertyName(this.HandrailDepthOffset, null);
+            this.HandrailDepthOffset.Location = new System.Drawing.Point(517, 205);
+            this.HandrailDepthOffset.Name = "HandrailDepthOffset";
+            this.HandrailDepthOffset.Size = new System.Drawing.Size(60, 20);
+            this.HandrailDepthOffset.TabIndex = 63;
+            this.HandrailDepthOffset.Text = "0";
+            this.HandrailDepthOffset.TextChanged += new System.EventHandler(this.HandrailDepthOffset_TextChanged);
+            // 
             // HandrailPlaneComboBox
             // 
             this.structuresExtender.SetAttributeName(this.HandrailPlaneComboBox, "HandrailPlane");
             this.structuresExtender.SetAttributeTypeName(this.HandrailPlaneComboBox, "Integer");
             this.structuresExtender.SetBindPropertyName(this.HandrailPlaneComboBox, null);
+            this.HandrailPlaneComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.HandrailPlaneComboBox.FormattingEnabled = true;
-            this.HandrailPlaneComboBox.Location = new System.Drawing.Point(417, 262);
+            this.HandrailPlaneComboBox.Location = new System.Drawing.Point(417, 261);
             this.HandrailPlaneComboBox.Name = "HandrailPlaneComboBox";
             this.HandrailPlaneComboBox.Size = new System.Drawing.Size(91, 21);
             this.HandrailPlaneComboBox.TabIndex = 55;
@@ -1470,8 +1676,9 @@
             this.structuresExtender.SetAttributeName(this.HandrailRotationComboBox, "HandrailRotation");
             this.structuresExtender.SetAttributeTypeName(this.HandrailRotationComboBox, "Integer");
             this.structuresExtender.SetBindPropertyName(this.HandrailRotationComboBox, null);
+            this.HandrailRotationComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.HandrailRotationComboBox.FormattingEnabled = true;
-            this.HandrailRotationComboBox.Location = new System.Drawing.Point(417, 234);
+            this.HandrailRotationComboBox.Location = new System.Drawing.Point(417, 233);
             this.HandrailRotationComboBox.Name = "HandrailRotationComboBox";
             this.HandrailRotationComboBox.Size = new System.Drawing.Size(91, 21);
             this.HandrailRotationComboBox.TabIndex = 53;
@@ -1483,7 +1690,7 @@
             this.structuresExtender.SetAttributeTypeName(this.label32, null);
             this.label32.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.label32, null);
-            this.label32.Location = new System.Drawing.Point(360, 266);
+            this.label32.Location = new System.Drawing.Point(360, 265);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(51, 13);
             this.label32.TabIndex = 51;
@@ -1495,7 +1702,7 @@
             this.structuresExtender.SetAttributeTypeName(this.label33, null);
             this.label33.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.label33, null);
-            this.label33.Location = new System.Drawing.Point(364, 238);
+            this.label33.Location = new System.Drawing.Point(364, 237);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(47, 13);
             this.label33.TabIndex = 50;
@@ -1518,6 +1725,7 @@
             this.structuresExtender.SetAttributeName(this.HandrailDepthComboBox, "HandrailDepth");
             this.structuresExtender.SetAttributeTypeName(this.HandrailDepthComboBox, "Integer");
             this.structuresExtender.SetBindPropertyName(this.HandrailDepthComboBox, null);
+            this.HandrailDepthComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.HandrailDepthComboBox.FormattingEnabled = true;
             this.HandrailDepthComboBox.Location = new System.Drawing.Point(417, 205);
             this.HandrailDepthComboBox.Name = "HandrailDepthComboBox";
@@ -1532,7 +1740,7 @@
             this.structuresExtender.SetAttributeTypeName(this.InsertHandrailButton, null);
             this.structuresExtender.SetBindPropertyName(this.InsertHandrailButton, null);
             this.InsertHandrailButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.InsertHandrailButton.Location = new System.Drawing.Point(256, 263);
+            this.InsertHandrailButton.Location = new System.Drawing.Point(501, 21);
             this.InsertHandrailButton.Name = "InsertHandrailButton";
             this.InsertHandrailButton.Size = new System.Drawing.Size(86, 22);
             this.InsertHandrailButton.TabIndex = 47;
@@ -1796,7 +2004,7 @@
             this.structuresExtender.SetAttributeTypeName(this.PickAndTestButton, null);
             this.structuresExtender.SetBindPropertyName(this.PickAndTestButton, null);
             this.PickAndTestButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.PickAndTestButton.Location = new System.Drawing.Point(170, 411);
+            this.PickAndTestButton.Location = new System.Drawing.Point(147, 411);
             this.PickAndTestButton.Name = "PickAndTestButton";
             this.PickAndTestButton.Size = new System.Drawing.Size(139, 22);
             this.PickAndTestButton.TabIndex = 16;
@@ -1811,11 +2019,11 @@
             this.structuresExtender.SetAttributeTypeName(this.ForceUpdateButton, null);
             this.structuresExtender.SetBindPropertyName(this.ForceUpdateButton, null);
             this.ForceUpdateButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.ForceUpdateButton.Location = new System.Drawing.Point(539, 411);
+            this.ForceUpdateButton.Location = new System.Drawing.Point(517, 411);
             this.ForceUpdateButton.Name = "ForceUpdateButton";
-            this.ForceUpdateButton.Size = new System.Drawing.Size(86, 22);
+            this.ForceUpdateButton.Size = new System.Drawing.Size(108, 22);
             this.ForceUpdateButton.TabIndex = 17;
-            this.ForceUpdateButton.Text = "Force update";
+            this.ForceUpdateButton.Text = "Show picked points";
             this.ForceUpdateButton.UseVisualStyleBackColor = true;
             this.ForceUpdateButton.Click += new System.EventHandler(this.ForceUpdateButton_Click);
             // 
@@ -1826,7 +2034,7 @@
             this.structuresExtender.SetAttributeTypeName(this.InsertRSButton, null);
             this.structuresExtender.SetBindPropertyName(this.InsertRSButton, null);
             this.InsertRSButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.InsertRSButton.Location = new System.Drawing.Point(380, 411);
+            this.InsertRSButton.Location = new System.Drawing.Point(360, 411);
             this.InsertRSButton.Name = "InsertRSButton";
             this.InsertRSButton.Size = new System.Drawing.Size(86, 22);
             this.InsertRSButton.TabIndex = 18;
@@ -1851,192 +2059,69 @@
             this.saveLoad1.TabIndex = 19;
             this.saveLoad1.UserDefinedHelpFilePath = null;
             // 
-            // PostDepthOffset
+            // OnTopSwitch
             // 
-            this.structuresExtender.SetAttributeName(this.PostDepthOffset, "PostDepthOffset");
-            this.structuresExtender.SetAttributeTypeName(this.PostDepthOffset, "String");
-            this.structuresExtender.SetBindPropertyName(this.PostDepthOffset, null);
-            this.PostDepthOffset.Location = new System.Drawing.Point(517, 205);
-            this.PostDepthOffset.Name = "PostDepthOffset";
-            this.PostDepthOffset.Size = new System.Drawing.Size(60, 20);
-            this.PostDepthOffset.TabIndex = 35;
-            this.PostDepthOffset.Text = "0";
-            this.PostDepthOffset.TextChanged += new System.EventHandler(this.PostDepthOffset_TextChanged);
+            this.structuresExtender.SetAttributeName(this.OnTopSwitch, null);
+            this.structuresExtender.SetAttributeTypeName(this.OnTopSwitch, null);
+            this.OnTopSwitch.AutoSize = true;
+            this.structuresExtender.SetBindPropertyName(this.OnTopSwitch, null);
+            this.OnTopSwitch.Location = new System.Drawing.Point(16, 411);
+            this.OnTopSwitch.Name = "OnTopSwitch";
+            this.OnTopSwitch.Size = new System.Drawing.Size(92, 17);
+            this.OnTopSwitch.TabIndex = 20;
+            this.OnTopSwitch.Text = "Always on top";
+            this.OnTopSwitch.UseVisualStyleBackColor = true;
+            this.OnTopSwitch.CheckedChanged += new System.EventHandler(this.OnTopSwitch_CheckedChanged);
             // 
-            // PostRotationOffset
+            // label38
             // 
-            this.structuresExtender.SetAttributeName(this.PostRotationOffset, "PostRotationOffset");
-            this.structuresExtender.SetAttributeTypeName(this.PostRotationOffset, "String");
-            this.structuresExtender.SetBindPropertyName(this.PostRotationOffset, null);
-            this.PostRotationOffset.Location = new System.Drawing.Point(517, 233);
-            this.PostRotationOffset.Name = "PostRotationOffset";
-            this.PostRotationOffset.Size = new System.Drawing.Size(60, 20);
-            this.PostRotationOffset.TabIndex = 36;
-            this.PostRotationOffset.Text = "0";
-            this.PostRotationOffset.TextChanged += new System.EventHandler(this.PostRotationOffset_TextChanged);
+            this.structuresExtender.SetAttributeName(this.label38, null);
+            this.structuresExtender.SetAttributeTypeName(this.label38, null);
+            this.label38.AutoSize = true;
+            this.structuresExtender.SetBindPropertyName(this.label38, null);
+            this.label38.Location = new System.Drawing.Point(375, 86);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(70, 13);
+            this.label38.TabIndex = 40;
+            this.label38.Text = "CC attributes:";
             // 
-            // PostPlaneOffset
+            // label39
             // 
-            this.structuresExtender.SetAttributeName(this.PostPlaneOffset, "PostPlaneOffset");
-            this.structuresExtender.SetAttributeTypeName(this.PostPlaneOffset, "String");
-            this.structuresExtender.SetBindPropertyName(this.PostPlaneOffset, null);
-            this.PostPlaneOffset.Location = new System.Drawing.Point(517, 261);
-            this.PostPlaneOffset.Name = "PostPlaneOffset";
-            this.PostPlaneOffset.Size = new System.Drawing.Size(60, 20);
-            this.PostPlaneOffset.TabIndex = 37;
-            this.PostPlaneOffset.Text = "0";
-            this.PostPlaneOffset.TextChanged += new System.EventHandler(this.PostPlaneOffset_TextChanged);
+            this.structuresExtender.SetAttributeName(this.label39, null);
+            this.structuresExtender.SetAttributeTypeName(this.label39, null);
+            this.label39.AutoSize = true;
+            this.structuresExtender.SetBindPropertyName(this.label39, null);
+            this.label39.Location = new System.Drawing.Point(375, 86);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(70, 13);
+            this.label39.TabIndex = 67;
+            this.label39.Text = "CC attributes:";
             // 
-            // InfillPlaneOffset
+            // PostCCAttributesComboBox
             // 
-            this.structuresExtender.SetAttributeName(this.InfillPlaneOffset, "InfillPlaneOffset");
-            this.structuresExtender.SetAttributeTypeName(this.InfillPlaneOffset, "String");
-            this.structuresExtender.SetBindPropertyName(this.InfillPlaneOffset, null);
-            this.InfillPlaneOffset.Location = new System.Drawing.Point(523, 262);
-            this.InfillPlaneOffset.Name = "InfillPlaneOffset";
-            this.InfillPlaneOffset.Size = new System.Drawing.Size(60, 20);
-            this.InfillPlaneOffset.TabIndex = 62;
-            this.InfillPlaneOffset.Text = "20";
-            this.InfillPlaneOffset.TextChanged += new System.EventHandler(this.InfillPlaneOffset_TextChanged);
+            this.structuresExtender.SetAttributeName(this.PostCCAttributesComboBox, "PostCCAttributeFileName");
+            this.structuresExtender.SetAttributeTypeName(this.PostCCAttributesComboBox, "Integer");
+            this.structuresExtender.SetBindPropertyName(this.PostCCAttributesComboBox, null);
+            this.PostCCAttributesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.PostCCAttributesComboBox.FormattingEnabled = true;
+            this.PostCCAttributesComboBox.Location = new System.Drawing.Point(454, 81);
+            this.PostCCAttributesComboBox.Name = "PostCCAttributesComboBox";
+            this.PostCCAttributesComboBox.Size = new System.Drawing.Size(94, 21);
+            this.PostCCAttributesComboBox.TabIndex = 42;
+            this.PostCCAttributesComboBox.SelectedValueChanged += new System.EventHandler(this.PostCCAttributesComboBox_SelectedValueChanged);
             // 
-            // InfillRotationOffset
+            // InfillCCAttributesComboBox
             // 
-            this.structuresExtender.SetAttributeName(this.InfillRotationOffset, "InfillRotationOffset");
-            this.structuresExtender.SetAttributeTypeName(this.InfillRotationOffset, "String");
-            this.structuresExtender.SetBindPropertyName(this.InfillRotationOffset, null);
-            this.InfillRotationOffset.Location = new System.Drawing.Point(523, 234);
-            this.InfillRotationOffset.Name = "InfillRotationOffset";
-            this.InfillRotationOffset.Size = new System.Drawing.Size(60, 20);
-            this.InfillRotationOffset.TabIndex = 61;
-            this.InfillRotationOffset.Text = "0";
-            this.InfillRotationOffset.TextChanged += new System.EventHandler(this.InfillRotationOffset_TextChanged);
-            // 
-            // InfillDepthOffset
-            // 
-            this.structuresExtender.SetAttributeName(this.InfillDepthOffset, "InfillDepthOffset");
-            this.structuresExtender.SetAttributeTypeName(this.InfillDepthOffset, "String");
-            this.structuresExtender.SetBindPropertyName(this.InfillDepthOffset, null);
-            this.InfillDepthOffset.Location = new System.Drawing.Point(523, 206);
-            this.InfillDepthOffset.Name = "InfillDepthOffset";
-            this.InfillDepthOffset.Size = new System.Drawing.Size(60, 20);
-            this.InfillDepthOffset.TabIndex = 60;
-            this.InfillDepthOffset.Text = "0";
-            this.InfillDepthOffset.TextChanged += new System.EventHandler(this.InfillDepthOffset_TextChanged);
-            // 
-            // InfillEndPointOffset
-            // 
-            this.structuresExtender.SetAttributeName(this.InfillEndPointOffset, "InfillEndPointDx");
-            this.structuresExtender.SetAttributeTypeName(this.InfillEndPointOffset, "String");
-            this.structuresExtender.SetBindPropertyName(this.InfillEndPointOffset, null);
-            this.InfillEndPointOffset.Location = new System.Drawing.Point(523, 166);
-            this.InfillEndPointOffset.Name = "InfillEndPointOffset";
-            this.InfillEndPointOffset.Size = new System.Drawing.Size(60, 20);
-            this.InfillEndPointOffset.TabIndex = 64;
-            this.InfillEndPointOffset.Text = "-10";
-            this.InfillEndPointOffset.TextChanged += new System.EventHandler(this.InfillEndPointOffset_TextChanged);
-            // 
-            // InfillStartPointOffset
-            // 
-            this.structuresExtender.SetAttributeName(this.InfillStartPointOffset, "InfillStartPointDx");
-            this.structuresExtender.SetAttributeTypeName(this.InfillStartPointOffset, "String");
-            this.structuresExtender.SetBindPropertyName(this.InfillStartPointOffset, null);
-            this.InfillStartPointOffset.Location = new System.Drawing.Point(523, 138);
-            this.InfillStartPointOffset.Name = "InfillStartPointOffset";
-            this.InfillStartPointOffset.Size = new System.Drawing.Size(60, 20);
-            this.InfillStartPointOffset.TabIndex = 63;
-            this.InfillStartPointOffset.Text = "10";
-            this.InfillStartPointOffset.TextChanged += new System.EventHandler(this.InfillStartPointOffset_TextChanged);
-            // 
-            // HandrailPlaneOffset
-            // 
-            this.structuresExtender.SetAttributeName(this.HandrailPlaneOffset, "HandrailPlaneOffset");
-            this.structuresExtender.SetAttributeTypeName(this.HandrailPlaneOffset, "String");
-            this.structuresExtender.SetBindPropertyName(this.HandrailPlaneOffset, null);
-            this.HandrailPlaneOffset.Location = new System.Drawing.Point(521, 262);
-            this.HandrailPlaneOffset.Name = "HandrailPlaneOffset";
-            this.HandrailPlaneOffset.Size = new System.Drawing.Size(60, 20);
-            this.HandrailPlaneOffset.TabIndex = 65;
-            this.HandrailPlaneOffset.Text = "0";
-            this.HandrailPlaneOffset.TextChanged += new System.EventHandler(this.HandrailPlaneOffset_TextChanged);
-            // 
-            // HandrailRotationOffset
-            // 
-            this.structuresExtender.SetAttributeName(this.HandrailRotationOffset, "HandrailRotationOffset");
-            this.structuresExtender.SetAttributeTypeName(this.HandrailRotationOffset, "String");
-            this.structuresExtender.SetBindPropertyName(this.HandrailRotationOffset, null);
-            this.HandrailRotationOffset.Location = new System.Drawing.Point(521, 234);
-            this.HandrailRotationOffset.Name = "HandrailRotationOffset";
-            this.HandrailRotationOffset.Size = new System.Drawing.Size(60, 20);
-            this.HandrailRotationOffset.TabIndex = 64;
-            this.HandrailRotationOffset.Text = "0";
-            this.HandrailRotationOffset.TextChanged += new System.EventHandler(this.HandrailRotationOffset_TextChanged);
-            // 
-            // HandrailDepthOffset
-            // 
-            this.structuresExtender.SetAttributeName(this.HandrailDepthOffset, "HandrailDepthOffset");
-            this.structuresExtender.SetAttributeTypeName(this.HandrailDepthOffset, "String");
-            this.structuresExtender.SetBindPropertyName(this.HandrailDepthOffset, null);
-            this.HandrailDepthOffset.Location = new System.Drawing.Point(521, 206);
-            this.HandrailDepthOffset.Name = "HandrailDepthOffset";
-            this.HandrailDepthOffset.Size = new System.Drawing.Size(60, 20);
-            this.HandrailDepthOffset.TabIndex = 63;
-            this.HandrailDepthOffset.Text = "0";
-            this.HandrailDepthOffset.TextChanged += new System.EventHandler(this.HandrailDepthOffset_TextChanged);
-            // 
-            // label37
-            // 
-            this.structuresExtender.SetAttributeName(this.label37, null);
-            this.structuresExtender.SetAttributeTypeName(this.label37, null);
-            this.label37.AutoSize = true;
-            this.structuresExtender.SetBindPropertyName(this.label37, null);
-            this.label37.Location = new System.Drawing.Point(325, 19);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(122, 13);
-            this.label37.TabIndex = 39;
-            this.label37.Text = "Use custom component:";
-            // 
-            // PostCCSwitchComboBox
-            // 
-            this.structuresExtender.SetAttributeName(this.PostCCSwitchComboBox, "PostCCSwitch");
-            this.structuresExtender.SetAttributeTypeName(this.PostCCSwitchComboBox, "Integer");
-            this.structuresExtender.SetBindPropertyName(this.PostCCSwitchComboBox, null);
-            this.PostCCSwitchComboBox.FormattingEnabled = true;
-            this.PostCCSwitchComboBox.Items.AddRange(new object[] {
-            "No",
-            "Yes"});
-            this.PostCCSwitchComboBox.Location = new System.Drawing.Point(453, 16);
-            this.PostCCSwitchComboBox.Name = "PostCCSwitchComboBox";
-            this.PostCCSwitchComboBox.Size = new System.Drawing.Size(73, 21);
-            this.PostCCSwitchComboBox.TabIndex = 38;
-            // 
-            // label17
-            // 
-            this.structuresExtender.SetAttributeName(this.label17, null);
-            this.structuresExtender.SetAttributeTypeName(this.label17, null);
-            this.label17.AutoSize = true;
-            this.structuresExtender.SetBindPropertyName(this.label17, null);
-            this.label17.Location = new System.Drawing.Point(340, 27);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(122, 13);
-            this.label17.TabIndex = 66;
-            this.label17.Text = "Use custom component:";
-            // 
-            // InfillCCSwitchComboBox
-            // 
-            this.structuresExtender.SetAttributeName(this.InfillCCSwitchComboBox, "InfillCCSwitch");
-            this.structuresExtender.SetAttributeTypeName(this.InfillCCSwitchComboBox, "Integer");
-            this.InfillCCSwitchComboBox.AutoCompleteCustomSource.AddRange(new string[] {
-            "No",
-            "Yes"});
-            this.structuresExtender.SetBindPropertyName(this.InfillCCSwitchComboBox, null);
-            this.InfillCCSwitchComboBox.FormattingEnabled = true;
-            this.InfillCCSwitchComboBox.Items.AddRange(new object[] {
-            "No",
-            "Yes"});
-            this.InfillCCSwitchComboBox.Location = new System.Drawing.Point(468, 24);
-            this.InfillCCSwitchComboBox.Name = "InfillCCSwitchComboBox";
-            this.InfillCCSwitchComboBox.Size = new System.Drawing.Size(73, 21);
-            this.InfillCCSwitchComboBox.TabIndex = 65;
+            this.structuresExtender.SetAttributeName(this.InfillCCAttributesComboBox, "InfillCCAttributeFileName");
+            this.structuresExtender.SetAttributeTypeName(this.InfillCCAttributesComboBox, "Integer");
+            this.structuresExtender.SetBindPropertyName(this.InfillCCAttributesComboBox, null);
+            this.InfillCCAttributesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.InfillCCAttributesComboBox.FormattingEnabled = true;
+            this.InfillCCAttributesComboBox.Location = new System.Drawing.Point(454, 81);
+            this.InfillCCAttributesComboBox.Name = "InfillCCAttributesComboBox";
+            this.InfillCCAttributesComboBox.Size = new System.Drawing.Size(94, 21);
+            this.InfillCCAttributesComboBox.TabIndex = 68;
+            this.InfillCCAttributesComboBox.SelectedValueChanged += new System.EventHandler(this.InfillCCAttributesComboBox_SelectedValueChanged);
             // 
             // RailingUI
             // 
@@ -2048,6 +2133,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.structuresExtender.SetBindPropertyName(this, null);
             this.ClientSize = new System.Drawing.Size(772, 445);
+            this.Controls.Add(this.OnTopSwitch);
             this.Controls.Add(this.saveLoad1);
             this.Controls.Add(this.InsertRSButton);
             this.Controls.Add(this.ForceUpdateButton);
@@ -2058,7 +2144,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "RailingUI";
-            this.ShowIcon = false;
+            this.ShowInTaskbar = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RailingVN";
             this.Load += new System.EventHandler(this.RailingUI_Load);
@@ -2219,6 +2305,11 @@
         private System.Windows.Forms.ComboBox PostCCSwitchComboBox;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.ComboBox InfillCCSwitchComboBox;
+        private System.Windows.Forms.CheckBox OnTopSwitch;
+        private System.Windows.Forms.ComboBox PostCCAttributesComboBox;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.ComboBox InfillCCAttributesComboBox;
     }
 }
 
