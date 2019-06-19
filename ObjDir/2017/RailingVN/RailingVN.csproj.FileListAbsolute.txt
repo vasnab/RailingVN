@@ -43,4 +43,7 @@ C:\Users\vasyl\source\repos\RailingVN\RailingVN\bin\Release\Tekla.Technology.Msg
 C:\Users\vasyl\source\repos\RailingVN\RailingVN\bin\Release\Tekla.Technology.Serialization.dll
 C:\Users\vasyl\source\repos\RailingVN\RailingVN\bin\Release\Tekla.Technology.Scripting.dll
 C:\Users\vasyl\source\repos\RailingVN\RailingVN\bin\Release\Tekla.Technology.Scripting.Plugins.dll
-C:\Users\vasyl\source\repos\RailingVN\ObjDir\2017\RailingVN\RailingVN.csprojResolveAssemblyReference.cache
+C:\Users\vasyl\source\repos\RailingVN\RailingVN\bin\Release\RailingVN.exe.manifest
+C:\Users\vasyl\source\repos\RailingVN\RailingVN\bin\Release\RailingVN.application
+C:\Users\vasyl\source\repos\RailingVN\ObjDir\2017\RailingVN\RailingVN.exe.manifest
+C:\Users\vasyl\source\repos\RailingVN\ObjDir\2017\RailingVN\RailingVN.application
